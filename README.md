@@ -167,15 +167,30 @@ AI 助手深度集成到编辑器工作流中，**开箱即用，无需任何配
 
 ## 📱 截图 / Screenshots
 
-| 首页 | 编辑器 | 控制台 | AI 助手 | 新建文件 |
-|:---:|:---:|:---:|:---:|:---:|
-| <img src="docs/首页.png" width="140"/> | <img src="docs/编辑页面.png" width="140"/> | <img src="docs/控制台页面.png" width="140"/> | <img src="docs/AI分析.png" width="140"/> | <img src="docs/新建文件.png" width="140"/> |
-| 文件管理、置顶、着色 | 语法高亮、快捷输入栏 | Rich 输出、多控制台 | Diff 对比、一键采纳 | 快速选择文件类型 |
+| 首页 | 编辑器 |
+|:---:|:---:|
+| <img src="docs/首页.png" width="280"/> | <img src="docs/编辑页面.png" width="280"/> |
+| 文件与文件夹管理、颜色标记、置顶、搜索、批量操作、回收站 | 语法高亮、行号、快捷输入栏、查找替换、捏合缩放字体 |
 
-| 库管理 | 工具箱 | HTML 预览 | Markdown | 设置 |
-|:---:|:---:|:---:|:---:|:---:|
-| <img src="docs/库管理.png" width="140"/> | <img src="docs/工具箱.png" width="140"/> | <img src="docs/html预览.png" width="140"/> | <img src="docs/md文件.png" width="140"/> | <img src="docs/设置.png" width="140"/> |
-| PyPI 搜索安装、150+ Wheel | 10 大开发者工具 | 全屏网页渲染、缩放 | Markdown 实时渲染 | 外观、编辑器、AI 配置 |
+| 控制台 | AI 助手 |
+|:---:|:---:|
+| <img src="docs/控制台页面.png" width="280"/> | <img src="docs/AI分析.png" width="280"/> |
+| Rich 彩色输出、进度条、多控制台切换、交互式 input() | Diff 差异对比、逐条采纳/拒绝、一键修复报错、智能装库 |
+
+| 库管理 | 工具箱 |
+|:---:|:---:|
+| <img src="docs/库管理.png" width="280"/> | <img src="docs/工具箱.png" width="280"/> |
+| 搜索 PyPI 安装、查看已安装、一键卸载、150+ 预装 Wheel | 编解码、JSON、API 调试、二维码、时间戳、正则、直链下载等 10 大工具 |
+
+| HTML 预览 | Markdown 渲染 |
+|:---:|:---:|
+| <img src="docs/html预览.png" width="280"/> | <img src="docs/md文件.png" width="280"/> |
+| 全屏网页渲染、双指捏合缩放、±按钮调节、alert/console 桥接 | Markdown 实时渲染预览，支持标题、列表、代码块、表格 |
+
+| 新建文件 | 设置 |
+|:---:|:---:|
+| <img src="docs/新建文件.png" width="280"/> | <img src="docs/设置.png" width="280"/> |
+| 支持 py/js/html/css/md/json 等多种格式，可设置文件颜色标记 | 外观、编辑器字体、AI 配置、应用锁定、快捷键栏自定义等 |
 
 ---
 
