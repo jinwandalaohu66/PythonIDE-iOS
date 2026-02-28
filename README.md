@@ -22,6 +22,7 @@
   <img src="https://img.shields.io/badge/Python-3.13-3776AB?style=flat-square&logo=python" alt="Python 3.13" />
   <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript" alt="JavaScript" />
   <img src="https://img.shields.io/badge/Swift-5.9-FA7343?style=flat-square&logo=swift" alt="Swift" />
+  <img src="https://img.shields.io/badge/C_Extensions-12+-brightgreen?style=flat-square" alt="C Extensions 12+" />
 </p>
 
 ---
@@ -130,16 +131,37 @@ AI 助手深度集成到编辑器工作流中，**开箱即用，无需任何配
 
 工具列表支持**搜索**、**拖拽排序**，可恢复默认顺序。
 
-### 📚 第三方库
+### ⚡ 内置原生 C 扩展库
+
+> C 扩展库由原生代码编译而来，运行速度比纯 Python 实现快 **10–100 倍**，以下库均已预置，直接 `import` 即用，无需 pip 安装。
+
+| 分类 | 库 | 说明 |
+|------|-----|------|
+| 科学计算 | **NumPy 1.26** | 数组、矩阵、线性代数、FFT、随机数 |
+| 图像处理 | **Pillow 12** | JPEG/PNG/WebP/AVIF 读写，滤镜、裁剪、合成 |
+| 高性能 JSON | **ujson** | 比标准 `json` 快 10 倍，接口完全兼容 |
+| 高性能序列化 | **msgpack** | 二进制序列化，体积更小、速度更快 |
+| 正则表达式 | **regex** | Unicode 分类、模糊匹配、重叠匹配，比 `re` 更强 |
+| 工业级加密 | **cryptography** | AES、RSA、ECDSA、Fernet 等完整加密套件 |
+| 密码哈希 | **bcrypt** | 密码安全存储的行业标准 |
+| 密码哈希 | **argon2-cffi** | 最新密码哈希标准，比 bcrypt 更安全 |
+| C 接口层 | **cffi** | Python 与 C 代码互调的基础库 |
+| 异步网络 | **aiohttp** | C 加速的高性能异步 HTTP 客户端 |
+| 数据结构 | **bitarray / lru-dict** | 高效位数组、C 实现的 LRU 缓存 |
+| 开发工具 | **coverage / kiwisolver** | 代码覆盖率统计、约束求解器 |
+
+### 📚 第三方库与库管理
+
 | 类别 | 示例 |
 |------|------|
-| **数据科学** | NumPy、Pandas、Matplotlib、SciPy、scikit-learn |
 | **网络** | requests、httpx、aiohttp、urllib3、certifi |
-| **加密** | PyCryptodome、cryptography |
-| **AI / 数据** | openai、pydantic、beautifulsoup4、lxml |
-| **其他** | Pillow、rich、tqdm、loguru 等 150+ 预装 Wheel |
+| **Telegram** | python-telegram-bot、telethon |
+| **数据解析** | beautifulsoup4、html5lib、rich、pygments |
+| **加密安全** | cryptography、bcrypt、argon2-cffi、cffi、pyaes |
+| **工具** | tqdm、schedule、humanize、cachetools、emoji、flask |
+| **其他** | 150+ 预装 Wheel，涵盖常用场景 |
 
-库管理：搜索 PyPI 安装新库、查看已安装、一键卸载，支持 `.whl` 文件直接安装。
+库管理：搜索 PyPI 安装新库、查看已安装（含内置 C 扩展库）、一键卸载，支持 `.whl` 文件直接安装。
 
 ### 📷 Photos 模块
 - Python 调用相册与相机
@@ -241,6 +263,6 @@ AI 助手深度集成到编辑器工作流中，**开箱即用，无需任何配
 
 <p align="center">
   <sub>
-    <strong>Topics</strong> · ios · python · javascript · ide · mobile-development · swift · scripting · developer-tools
+    <strong>Topics</strong> · ios · python · javascript · ide · numpy · pillow · cryptography · mobile-development · swift · scripting · developer-tools
   </sub>
 </p>
