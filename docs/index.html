@@ -7,8 +7,6 @@
   <title>PythonIDE - 掌上的 Python & JavaScript 开发环境</title>
   <link rel="icon" type="image/png" href="icon.png" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
-    
     :root {
       --bg: #050508;
       --card: rgba(22, 27, 34, 0.7);
@@ -49,7 +47,7 @@
     html { scroll-behavior: smooth; }
     
     body {
-      font-family: 'Noto Sans SC', -apple-system, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
@@ -300,13 +298,12 @@
       background: linear-gradient(90deg, var(--border), transparent);
     }
 
-    /* Bento Grid - 特色布局 */
+    /* Bento Grid - 为什么选择 */
     .bento {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
-      gap: 1.5rem;
-      margin-bottom: 4rem;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
     }
     .bento-card {
       background: var(--card);
@@ -334,22 +331,21 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(255, 255, 255, 0.06);
     }
     .bento-card:hover::before { opacity: 1; }
-    .bento-card.featured { grid-column: span 2; }
-    .bento-card .icon { font-size: 2rem; margin-bottom: 1rem; }
+    .bento-card .icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
     .bento-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text); }
     .bento-card p { color: var(--text-muted); font-size: 0.95rem; }
 
     .why-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
-      margin: 2rem 0;
+      margin-top: 0;
     }
     .why-item {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 1rem;
-      padding: 1.25rem;
+      padding: 1rem 1.25rem;
       background: var(--card);
       border-radius: 16px;
       border: 1px solid var(--border);
@@ -358,8 +354,8 @@
     .why-item:hover {
       border-color: var(--hover-border);
       background: var(--card-hover);
-      transform: translateX(6px);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
     }
     .why-item .check {
       width: 28px;
@@ -439,15 +435,15 @@
       transition: all 0.3s;
     }
     .tab-btn:hover {
-      color: #fff;
+      color: var(--text);
       border-color: var(--hover-border);
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--card-hover);
     }
     .tab-btn.active {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
-      color: #fff;
+      background: var(--card-hover);
+      color: var(--text);
       border-color: var(--hover-border);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px var(--hover-glow);
     }
     .tab-content { display: none; }
     .tab-content.active {
@@ -462,11 +458,13 @@
       gap: 1rem;
     }
     .feature-chip {
-      padding: 1rem;
+      padding: 1rem 1.25rem;
       background: var(--card);
       border-radius: 12px;
       border: 1px solid var(--border);
       transition: all 0.3s;
+      text-align: center;
+      color: var(--text);
     }
     .feature-chip:hover {
       border-color: var(--hover-border);
@@ -494,7 +492,11 @@
       gap: 1rem;
     }
     .link-card {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       padding: 1.25rem;
       background: var(--card);
       border-radius: 16px;
@@ -509,7 +511,7 @@
       transform: translateY(-4px);
       box-shadow: 0 10px 40px rgba(255, 255, 255, 0.08);
     }
-    .link-card span { color: #e6edf3; font-weight: 600; }
+    .link-card span { color: var(--text); font-weight: 600; display: block; margin-bottom: 0.25rem; }
 
     /* Donate */
     .donate-section {
@@ -540,7 +542,6 @@
     }
     .footer a { color: var(--accent); text-decoration: none; }
     .footer a:hover { text-shadow: 0 0 20px var(--accent-glow); }
-    .link-card span { color: var(--text); }
 
     @media (prefers-color-scheme: light) {
       .btn-appstore { border-color: rgba(0,0,0,0.15); }
@@ -553,9 +554,10 @@
     }
 
     @media (max-width: 768px) {
-      .bento-card.featured { grid-column: span 1; }
       .bento { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
+      .feature-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -605,30 +607,35 @@
         <p style="margin-bottom: 1.5rem; color: var(--text-muted); font-style: italic;">不是把电脑版塞进手机，而是专为触摸屏和移动场景重新设计的编程环境。</p>
         
         <div class="bento">
-          <div class="bento-card featured">
+          <div class="bento-card">
             <div class="icon">🚀</div>
             <h3>完全本地运行</h3>
-            <p>代码执行不依赖任何服务器，无网络也能用。Python 3.13 完整标准库，asyncio、threading、socket 全都有。</p>
+            <p>代码执行不依赖任何服务器，无网络也能用。</p>
           </div>
           <div class="bento-card">
             <div class="icon">⚡</div>
             <h3>12 个 C 扩展</h3>
-            <p>NumPy、Pillow、cryptography 等，速度是纯 Python 的 10–100 倍。</p>
+            <p>NumPy、Pillow、cryptography 等，10–100 倍加速。</p>
           </div>
           <div class="bento-card">
             <div class="icon">📦</div>
             <h3>150+ 预装库</h3>
-            <p>常用库开箱即用，搜索 PyPI 在线安装更多。</p>
+            <p>常用库开箱即用，搜索 PyPI 在线安装。</p>
           </div>
           <div class="bento-card">
             <div class="icon">🤖</div>
             <h3>AI 助手</h3>
-            <p>免费额度直接用，支持 BYOK 无限使用。</p>
+            <p>免费额度 + BYOK 无限使用。</p>
           </div>
-          <div class="bento-card featured">
+          <div class="bento-card">
             <div class="icon">📱</div>
             <h3>iOS 深度集成</h3>
-            <p>灵动岛、Siri 快捷指令、x-callback-url、相册/相机 API 一应俱全。</p>
+            <p>灵动岛、Siri 快捷指令、x-callback-url。</p>
+          </div>
+          <div class="bento-card">
+            <div class="icon">🔒</div>
+            <h3>隐私安全</h3>
+            <p>Face ID 锁定，本地运行，代码不外传。</p>
           </div>
         </div>
 
@@ -754,8 +761,8 @@
         constructor() {
           this.x = Math.random() * w;
           this.y = Math.random() * h;
-          this.vx = (Math.random() - 0.5) * 0.8;
-          this.vy = (Math.random() - 0.5) * 0.8;
+          this.vx = (Math.random() - 0.5) * 0.15;
+          this.vy = (Math.random() - 0.5) * 0.15;
           this.r = Math.random() * 2 + 1;
           this.opacity = Math.random() * 0.5 + 0.2;
         }
