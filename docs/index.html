@@ -372,8 +372,8 @@
     /* Screenshots - 交互卡片 */
     .screenshots {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
       margin: 2rem 0;
     }
     .screenshot-item {
@@ -399,8 +399,10 @@
     .screenshot-item:hover::before { opacity: 1; }
     .screenshot-item img {
       width: 100%;
+      max-width: 260px;
+      margin: 0 auto;
       display: block;
-      border-radius: 20px;
+      border-radius: 16px;
       border: 1px solid var(--border);
     }
     .screenshot-item p {
