@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PythonIDE - 掌上的 Python & JavaScript 开发环境" />
+  <title>PythonIDE - 掌上的 Python & JavaScript 开发环境</title>
+  <link rel="icon" type="image/png" href="icon.png" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+    
+    :root {
+      --bg: #050508;
+      --card: rgba(22, 27, 34, 0.7);
+      --card-hover: rgba(45, 50, 60, 0.85);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent: #e6edf3;
+      --accent-glow: rgba(255, 255, 255, 0.25);
+      --particle-color: 255, 255, 255;
+      --nav-bg: rgba(5,5,8,0.95);
+      --logo-shadow: rgba(255, 255, 255, 0.08);
+      --title-gradient: linear-gradient(135deg, #fff 0%, #c9d1d9 50%, #8b949e 100%);
+      --hover-border: rgba(255, 255, 255, 0.35);
+      --hover-glow: rgba(255, 255, 255, 0.08);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f8fa;
+        --card: rgba(255, 255, 255, 0.9);
+        --card-hover: rgba(255, 255, 255, 1);
+        --border: rgba(31, 35, 40, 0.15);
+        --text: #1f2328;
+        --text-muted: #656d76;
+        --accent: #1f2328;
+        --accent-glow: rgba(31, 35, 40, 0.2);
+        --particle-color: 31, 35, 40;
+        --nav-bg: rgba(246,248,250,0.95);
+        --logo-shadow: rgba(31, 35, 40, 0.12);
+        --title-gradient: linear-gradient(135deg, #1f2328 0%, #424a53 50%, #656d76 100%);
+        --hover-border: rgba(31, 35, 40, 0.25);
+        --hover-glow: rgba(31, 35, 40, 0.08);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Noto Sans SC', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ===== Particle Canvas ===== */
+    #particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .content { position: relative; z-index: 1; }
+
+    /* ===== Nav ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: linear-gradient(180deg, var(--nav-bg) 0%, transparent 100%);
+      backdrop-filter: blur(8px);
+      transition: all 0.3s;
+    }
+    .nav-logo { font-weight: 700; font-size: 1.25rem; color: var(--text); }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s, text-shadow 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); text-shadow: 0 0 20px var(--accent-glow); }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+      position: relative;
+    }
+
+    .hero .logo-wrap {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .hero .logo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      opacity: 0.5;
+      filter: blur(40px);
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+    .hero img.logo {
+      width: 140px;
+      height: 140px;
+      border-radius: 32px;
+      position: relative;
+      box-shadow: 0 0 60px var(--logo-shadow), 0 20px 60px rgba(0,0,0,0.2);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .hero img.logo:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 0 80px var(--logo-shadow), 0 20px 80px rgba(0,0,0,0.3);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: var(--title-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fade-in-up 0.8s ease-out;
+    }
+    .hero .tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+      animation: fade-in-up 0.8s ease-out 0.1s both;
+    }
+    .hero .sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      opacity: 0.8;
+      margin-bottom: 2.5rem;
+      animation: fade-in-up 0.8s ease-out 0.2s both;
+    }
+
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== CTA Buttons - 炫酷交互 ===== */
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      animation: fade-in-up 0.8s ease-out 0.3s both;
+    }
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .btn:hover::before { opacity: 1; }
+
+    .btn-appstore {
+      background: linear-gradient(135deg, #000 0%, #1a1a2e 100%);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .btn-appstore::before {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+    }
+    .btn-appstore:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255,255,255,0.2);
+      border-color: var(--hover-border);
+    }
+    .btn-appstore:active { transform: translateY(-2px) scale(0.98); }
+
+    .btn-github {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .btn-github::before {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    }
+    .btn-github:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(255,255,255,0.1), inset 0 0 30px rgba(255,255,255,0.03);
+      border-color: var(--hover-border);
+      color: #fff;
+    }
+
+    /* Tech pills - 悬浮交互 */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      animation: fade-in-up 0.8s ease-out 0.4s both;
+    }
+    .tech-pill {
+      padding: 0.5rem 1rem;
+      background: var(--card);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .tech-pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-color: var(--hover-border);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint span {
+      display: block;
+      width: 24px;
+      height: 40px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      position: relative;
+    }
+    .scroll-hint span::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 8px;
+      background: #fff;
+      border-radius: 2px;
+      animation: scroll-dot 2s infinite;
+    }
+    @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+    @keyframes scroll-dot { 0% { opacity: 1; top: 8px; } 100% { opacity: 0; top: 24px; } }
+
+    /* ===== Sections ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    /* Bento Grid - 特色布局 */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .bento-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .bento-card:hover {
+      transform: translateY(-6px);
+      background: var(--card-hover);
+      border-color: var(--hover-border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(255, 255, 255, 0.06);
+    }
+    .bento-card:hover::before { opacity: 1; }
+    .bento-card.featured { grid-column: span 2; }
+    .bento-card .icon { font-size: 2rem; margin-bottom: 1rem; }
+    .bento-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text); }
+    .bento-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .why-item:hover {
+      border-color: var(--hover-border);
+      background: var(--card-hover);
+      transform: translateX(6px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    .why-item .check {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(200,200,210,0.8));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Screenshots - 交互卡片 */
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .screenshot-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .screenshot-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.6) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1;
+    }
+    .screenshot-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(255, 255, 255, 0.08);
+    }
+    .screenshot-item:hover::before { opacity: 1; }
+    .screenshot-item img {
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .screenshot-item p {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 1rem 1rem;
+      color: #fff;
+      font-size: 0.9rem;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+      z-index: 2;
+    }
+    .screenshot-item:hover p { transform: translateY(0); }
+
+    /* Feature tabs - 可切换 */
+    .feature-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .tab-btn:hover {
+      color: #fff;
+      border-color: var(--hover-border);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+      color: #fff;
+      border-color: var(--hover-border);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    }
+    .tab-content { display: none; }
+    .tab-content.active {
+      display: block;
+      animation: fade-in 0.4s ease-out;
+    }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .feature-chip {
+      padding: 1rem;
+      background: var(--card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .feature-chip:hover {
+      border-color: var(--hover-border);
+      background: var(--card-hover);
+      transform: scale(1.02);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Install CTA */
+    .install-cta {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%);
+      border-radius: 24px;
+      margin: 4rem 0;
+      border: 1px solid var(--border);
+    }
+    .install-cta h2 { margin-bottom: 1rem; }
+    .install-cta .btn { margin: 0.5rem; }
+
+    /* Links - 发光按钮 */
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .link-card {
+      display: block;
+      padding: 1.25rem;
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .link-card:hover {
+      border-color: var(--hover-border);
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px rgba(255, 255, 255, 0.08);
+    }
+    .link-card span { color: #e6edf3; font-weight: 600; }
+
+    /* Donate */
+    .donate-section {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--card);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+    }
+    .donate-qr img {
+      width: 180px;
+      border-radius: 12px;
+      margin-top: 1rem;
+      border: 2px solid var(--border);
+      transition: all 0.3s;
+    }
+    .donate-qr img:hover {
+      border-color: var(--hover-border);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+    .footer a:hover { text-shadow: 0 0 20px var(--accent-glow); }
+    .link-card span { color: var(--text); }
+
+    @media (prefers-color-scheme: light) {
+      .btn-appstore { border-color: rgba(0,0,0,0.15); }
+      .btn-github:hover { color: var(--text); }
+      .tech-pill:hover { color: var(--text); }
+      .scroll-hint span { border-color: var(--border); }
+      .scroll-hint span::after { background: var(--text); }
+      .screenshot-item p { color: #fff; }
+      .why-item .check { background: linear-gradient(135deg, #424a53, #656d76); color: #fff; }
+    }
+
+    @media (max-width: 768px) {
+      .bento-card.featured { grid-column: span 1; }
+      .bento { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <nav class="nav">
+    <span class="nav-logo">PythonIDE</span>
+    <div class="nav-links">
+      <a href="#why">为什么选择</a>
+      <a href="#screenshots">截图</a>
+      <a href="#features">功能</a>
+      <a href="#install">下载</a>
+      <a href="https://github.com/jinwandalaohu66/PythonIDE-Landing">GitHub</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <header class="hero">
+      <div class="logo-wrap">
+        <img src="icon.png" alt="PythonIDE" class="logo" />
+      </div>
+      <h1>PythonIDE</h1>
+      <p class="tagline">掌上的 Python & JavaScript 开发环境</p>
+      <p class="sub">让编程从电脑走到手机与平板 · Write, Run, Debug on iOS</p>
+      
+      <div class="cta">
+        <a href="https://apps.apple.com/app/id6753987304" class="btn btn-appstore"> App Store 免费下载</a>
+        <a href="https://github.com/jinwandalaohu66/PythonIDE-Landing" class="btn btn-github">⭐ GitHub</a>
+      </div>
+      
+      <div class="tech-stack">
+        <span class="tech-pill">iOS 16.2+</span>
+        <span class="tech-pill">Python 3.13</span>
+        <span class="tech-pill">JavaScript ES6+</span>
+        <span class="tech-pill">Swift 5.9</span>
+        <span class="tech-pill">C 扩展 12+</span>
+        <span class="tech-pill">预装 Wheels 150+</span>
+      </div>
+
+      <div class="scroll-hint"><span></span></div>
+    </header>
+
+    <div class="container">
+      <section id="why">
+        <h2 class="section-title">🌟 为什么选择 PythonIDE？</h2>
+        <p style="margin-bottom: 1.5rem; color: var(--text-muted); font-style: italic;">不是把电脑版塞进手机，而是专为触摸屏和移动场景重新设计的编程环境。</p>
+        
+        <div class="bento">
+          <div class="bento-card featured">
+            <div class="icon">🚀</div>
+            <h3>完全本地运行</h3>
+            <p>代码执行不依赖任何服务器，无网络也能用。Python 3.13 完整标准库，asyncio、threading、socket 全都有。</p>
+          </div>
+          <div class="bento-card">
+            <div class="icon">⚡</div>
+            <h3>12 个 C 扩展</h3>
+            <p>NumPy、Pillow、cryptography 等，速度是纯 Python 的 10–100 倍。</p>
+          </div>
+          <div class="bento-card">
+            <div class="icon">📦</div>
+            <h3>150+ 预装库</h3>
+            <p>常用库开箱即用，搜索 PyPI 在线安装更多。</p>
+          </div>
+          <div class="bento-card">
+            <div class="icon">🤖</div>
+            <h3>AI 助手</h3>
+            <p>免费额度直接用，支持 BYOK 无限使用。</p>
+          </div>
+          <div class="bento-card featured">
+            <div class="icon">📱</div>
+            <h3>iOS 深度集成</h3>
+            <p>灵动岛、Siri 快捷指令、x-callback-url、相册/相机 API 一应俱全。</p>
+          </div>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-item"><span class="check">✓</span><span>完全本地运行，无网络也能用</span></div>
+          <div class="why-item"><span class="check">✓</span><span>Python 3.13 完整标准库</span></div>
+          <div class="why-item"><span class="check">✓</span><span>12 个预装 C 扩展，10-100x 加速</span></div>
+          <div class="why-item"><span class="check">✓</span><span>150+ 预装 Wheel 库</span></div>
+          <div class="why-item"><span class="check">✓</span><span>AI 助手开箱即用</span></div>
+          <div class="why-item"><span class="check">✓</span><span>灵动岛、Siri、x-callback-url</span></div>
+        </div>
+      </section>
+
+      <section id="screenshots">
+        <h2 class="section-title">📱 截图展示</h2>
+        <div class="screenshots">
+          <div class="screenshot-item"><img src="首页.png" alt="首页" /><p>首页 · 文件管理、颜色标记、置顶、搜索</p></div>
+          <div class="screenshot-item"><img src="编辑页面.png" alt="编辑器" /><p>编辑器 · 语法高亮、智能补全、快捷输入栏</p></div>
+          <div class="screenshot-item"><img src="控制台页面.png" alt="控制台" /><p>控制台 · Rich 彩色输出、多控制台切换</p></div>
+          <div class="screenshot-item"><img src="AI分析.png" alt="AI 助手" /><p>AI 助手 · Diff 差异对比、一键修复报错</p></div>
+          <div class="screenshot-item"><img src="库管理.png" alt="库管理" /><p>库管理 · PyPI 搜索安装、热门库分类</p></div>
+          <div class="screenshot-item"><img src="工具箱.png" alt="工具箱" /><p>工具箱 · 编解码、JSON、API 调试、正则</p></div>
+          <div class="screenshot-item"><img src="html预览.png" alt="HTML 预览" /><p>HTML 预览 · 全屏网页渲染、双指缩放</p></div>
+          <div class="screenshot-item"><img src="md文件.png" alt="Markdown" /><p>Markdown 渲染 · 实时渲染、代码块、表格</p></div>
+          <div class="screenshot-item"><img src="新建文件.png" alt="新建文件" /><p>新建文件 · 多种格式、颜色标记</p></div>
+          <div class="screenshot-item"><img src="设置.png" alt="设置" /><p>设置 · 外观、AI 配置、应用锁定</p></div>
+        </div>
+      </section>
+
+      <section id="features">
+        <h2 class="section-title">✨ 核心功能</h2>
+        <div class="feature-tabs">
+          <button class="tab-btn active" data-tab="lang">多语言</button>
+          <button class="tab-btn" data-tab="editor">编辑器</button>
+          <button class="tab-btn" data-tab="ai">AI 助手</button>
+          <button class="tab-btn" data-tab="libs">扩展库</button>
+          <button class="tab-btn" data-tab="tools">工具箱</button>
+        </div>
+        <div id="tab-lang" class="tab-content active">
+          <div class="feature-grid">
+            <div class="feature-chip"><strong>Python 3.13</strong><br/>完整标准库、async/await、多线程</div>
+            <div class="feature-chip"><strong>JavaScript</strong><br/>alert/fetch/localStorage、剪贴板桥接</div>
+            <div class="feature-chip"><strong>HTML 预览</strong><br/>WKWebView 全屏渲染、双指缩放</div>
+          </div>
+        </div>
+        <div id="tab-editor" class="tab-content">
+          <div class="feature-grid">
+            <div class="feature-chip">语法高亮、Jedi 智能补全</div>
+            <div class="feature-chip">查找替换、快捷输入栏</div>
+            <div class="feature-chip">分屏模式、错误跳转</div>
+            <div class="feature-chip">运行历史、实时保存</div>
+          </div>
+        </div>
+        <div id="tab-ai" class="tab-content">
+          <div class="feature-grid">
+            <div class="feature-chip">行内修改 + Diff 对比</div>
+            <div class="feature-chip">报错一键修复</div>
+            <div class="feature-chip">智能装库</div>
+            <div class="feature-chip">BYOK 无限使用</div>
+          </div>
+        </div>
+        <div id="tab-libs" class="tab-content">
+          <div class="feature-grid">
+            <div class="feature-chip">NumPy · Pillow · ujson</div>
+            <div class="feature-chip">cryptography · bcrypt</div>
+            <div class="feature-chip">aiohttp · regex</div>
+            <div class="feature-chip">requests · flask</div>
+          </div>
+        </div>
+        <div id="tab-tools" class="tab-content">
+          <div class="feature-grid">
+            <div class="feature-chip">编解码 · JSON · API 调试</div>
+            <div class="feature-chip">二维码 · 时间戳</div>
+            <div class="feature-chip">正则表达式</div>
+            <div class="feature-chip">直链下载</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="install" class="install-cta">
+        <h2>📥 立即下载</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">iOS 16.2+ · iPhone / iPad · 免费</p>
+        <a href="https://apps.apple.com/app/id6753987304" class="btn btn-appstore"> App Store 免费下载</a>
+      </section>
+
+      <section>
+        <h2 class="section-title">💬 社区与反馈</h2>
+        <div class="link-grid">
+          <a href="https://t.me/pythonzwb" class="link-card"><span>Telegram</span> 频道交流</a>
+          <a href="https://github.com/jinwandalaohu66/PythonIDE-Landing/discussions" class="link-card"><span>Discussions</span> 功能建议</a>
+          <a href="https://github.com/jinwandalaohu66/PythonIDE-Landing/issues" class="link-card"><span>Issues</span> 问题反馈</a>
+        </div>
+      </section>
+
+      <section class="donate-section">
+        <h2 class="section-title">☕ 支持开发</h2>
+        <p style="color: var(--text-muted);">App Store 评分 · GitHub Star · 应用内捐赠（棒棒糖 / 鸡腿 / 奶茶）</p>
+        <div class="donate-qr">
+          <img src="donate-qr.jpeg" alt="赞赏码" width="180" />
+          <p style="margin-top: 0.75rem; color: var(--text-muted);">扫码赞赏 · Thank you ♥</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p><strong>PythonIDE</strong> —— 本地、纯粹、实用的移动端编程环境</p>
+        <p style="margin-top: 0.5rem;"><a href="https://github.com/jinwandalaohu66/PythonIDE-Landing">查看 README.md 完整文档</a></p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // ===== 粒子效果 =====
+    (function() {
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+      let particles = [];
+      const count = Math.min(80, Math.floor((w * h) / 15000));
+      const maxDist = 120;
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * w;
+          this.y = Math.random() * h;
+          this.vx = (Math.random() - 0.5) * 0.8;
+          this.vy = (Math.random() - 0.5) * 0.8;
+          this.r = Math.random() * 2 + 1;
+          this.opacity = Math.random() * 0.5 + 0.2;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > w) this.vx *= -1;
+          if (this.y < 0 || this.y > h) this.vy *= -1;
+        }
+      }
+
+      for (let i = 0; i < count; i++) particles.push(new Particle());
+
+      function getParticleColor() {
+        const rgb = getComputedStyle(document.documentElement).getPropertyValue('--particle-color').trim() || '255, 255, 255';
+        return rgb;
+      }
+
+      function draw() {
+        const particleColor = getParticleColor();
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          p.update();
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${particleColor}, ${p.opacity})`;
+          ctx.fill();
+        });
+        particles.forEach((a, i) => {
+          particles.slice(i + 1).forEach(b => {
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxDist) {
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(${particleColor}, ${0.12 * (1 - dist / maxDist)})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          });
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+
+      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', draw);
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      // 鼠标交互 - 粒子避让
+      let mouse = { x: null, y: null };
+      document.addEventListener('mousemove', e => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      document.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+      setInterval(() => {
+        if (mouse.x === null) return;
+        particles.forEach(p => {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 150) {
+            const force = (150 - dist) / 150;
+            p.vx += (dx / dist) * force * 0.5;
+            p.vy += (dy / dist) * force * 0.5;
+          }
+        });
+      }, 50);
+    })();
+
+    // ===== Tab 切换 =====
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
