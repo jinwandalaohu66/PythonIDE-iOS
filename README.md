@@ -276,6 +276,12 @@ dialogs.hud_alert("操作完成！")
 
 还支持 `clipboard`（读写系统剪贴板）和 `console`（彩色输出、清屏、粗体）模块。
 
+#### 📐 ui 模块 — 原生界面
+
+Pythonista 兼容的 UI 模块，用 Python 创建原生 iOS 界面（View、Button、Label、TextField、ScrollView、TableView、WebView 等），支持 `present()` 全屏/半屏展示、自绘、load_view 等。
+
+- **[UI 模块完整文档（中文）](docs/ui-module-zh.md)** · [Full docs (English)](docs/ui-module-en.md)
+
 ---
 
 ### 🔒 隐私与个性化
