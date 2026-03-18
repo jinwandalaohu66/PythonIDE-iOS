@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 4,
-  "updated": "2026-03-18T16:08:23.869Z",
+  "data_version": 5,
+  "updated": "2026-03-18T16:29:42.203Z",
   "announcement": null,
   "categories": [
     {
@@ -278,6 +278,29 @@
       "file_type": "py",
       "author": "今晚打老虎",
       "author_en": "今晚打老虎",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-18",
+      "updated": null,
+      "status": "active",
+      "lines": 616
+    },
+    {
+      "id": "script_mmw9b6wi",
+      "name": "水果忍者",
+      "name_en": "水果忍者",
+      "desc": "水果忍者儿童的回忆",
+      "desc_en": "水果忍者儿童的回忆",
+      "category": "games",
+      "file": "scripts/games/script_mmw9b6wi.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "今晚打老虎🐯",
+      "author_en": "今晚打老虎🐯",
       "tags": [
         "community"
       ],
