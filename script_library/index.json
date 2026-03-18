@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 2,
-  "updated": "2026-03-18T15:24:12.403Z",
+  "data_version": 3,
+  "updated": "2026-03-18T15:31:06.760Z",
   "announcement": null,
   "categories": [
     {
@@ -241,6 +241,29 @@
       "updated": null,
       "status": "active",
       "lines": 144
+    },
+    {
+      "id": "script_mmw77ur1",
+      "name": "俄罗斯方块",
+      "name_en": "俄罗斯方块",
+      "desc": "俄罗斯方块小游戏，AI制作",
+      "desc_en": "俄罗斯方块小游戏，AI制作",
+      "category": "games",
+      "file": "scripts/games/script_mmw77ur1.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "今晚打老虎🐯",
+      "author_en": "今晚打老虎🐯",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-18",
+      "updated": null,
+      "status": "active",
+      "lines": 603
     }
   ]
 }
