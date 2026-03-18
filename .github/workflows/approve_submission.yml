@@ -115,7 +115,20 @@ jobs:
                   '小组件': 'widgets', 'Widgets': 'widgets', 'widgets': 'widgets',
                   '其他': 'other', 'Other': 'other', 'other': 'other'
                 };
-                const catId = catMap[category] || 'basic';
+                let catId = catMap[category] || 'basic';
+
+                // 4b. 基于代码关键词自动修正分类
+                const codeForClassify = scriptContents.map(s => s.content).join('\n');
+                if (/\bimport\s+scene\b|from\s+scene\s+import\b|scene\.run\s*\(/.test(codeForClassify)) {
+                  catId = 'games';
+                  core.info(`PR #${pr.number}: Auto-classified as "games" (detected scene module)`);
+                } else if (/\bimport\s+ui\b|from\s+ui\s+import\b|\.present\s*\(/.test(codeForClassify)) {
+                  catId = 'ui';
+                  core.info(`PR #${pr.number}: Auto-classified as "ui" (detected ui module)`);
+                } else if (/from\s+widget\s+import\b|__WIDGET_LAYOUT__|Widget\s*\(/.test(codeForClassify)) {
+                  catId = 'widgets';
+                  core.info(`PR #${pr.number}: Auto-classified as "widgets" (detected widget module)`);
+                }
 
                 // 5. 基于最新 main 重建分支
                 execSync('git checkout main', { stdio: 'pipe' });
