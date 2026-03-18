@@ -1,18 +1,16 @@
-name: Auto-rebase submission PRs
+name: Rebuild open submission PRs after merge
 
-# 每当有 PR 合并到 main 时触发
 on:
   pull_request:
     types: [closed]
     branches: [main]
 
 concurrency:
-  group: rebase-submissions
+  group: rebuild-submissions
   cancel-in-progress: false
 
 jobs:
-  rebase-open-prs:
-    # 只在 PR 被合并（不是关闭）时运行
+  rebuild:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
@@ -23,14 +21,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0
+          fetch-depth: 1
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Rebase all open submission PRs
+      - name: Rebuild open PRs onto latest main
         uses: actions/github-script@v7
         with:
           script: |
             const { execSync } = require('child_process');
+            const fs = require('fs');
+            const path = require('path');
 
             execSync('git config user.name "github-actions[bot]"');
             execSync('git config user.email "github-actions[bot]@users.noreply.github.com"');
@@ -46,54 +46,155 @@ jobs:
             });
 
             if (openPRs.length === 0) {
-              core.info('No open PRs to rebase.');
+              core.info('No open PRs to rebuild.');
               return;
             }
 
-            core.info(`Found ${openPRs.length} open PR(s) to rebase.`);
-
-            let succeeded = 0;
-            let failed = 0;
+            core.info(`Found ${openPRs.length} open PR(s) to rebuild.`);
 
             for (const pr of openPRs) {
               const branch = pr.head.ref;
-              core.info(`\nRebasing PR #${pr.number}: ${pr.title} (branch: ${branch})`);
+              core.info(`\nRebuilding PR #${pr.number}: ${pr.title} (branch: ${branch})`);
 
               try {
-                // 获取远程分支
-                execSync(`git fetch origin ${branch}:${branch}`, { stdio: 'pipe' });
-
-                // 切到该分支并 rebase 到最新 main
-                execSync(`git checkout ${branch}`, { stdio: 'pipe' });
-                execSync('git rebase origin/main', { stdio: 'pipe' });
-
-                // force push 更新 PR
-                execSync(`git push origin ${branch} --force-with-lease`, { stdio: 'pipe' });
-
-                core.info(`✅ PR #${pr.number} rebased successfully.`);
-                succeeded++;
-
-                // 切回 main 准备下一个
-                execSync('git checkout main', { stdio: 'pipe' });
-              } catch (e) {
-                core.warning(`❌ PR #${pr.number} rebase failed, aborting.`);
-                failed++;
-
-                try {
-                  execSync('git rebase --abort', { stdio: 'pipe' });
-                } catch (_) {}
-
-                execSync('git checkout main', { stdio: 'pipe' });
-
-                // 在 PR 上留言提示冲突
-                await github.rest.pulls.createReview({
+                // 1. 获取 PR 的文件变更列表
+                const { data: files } = await github.rest.pulls.listFiles({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
-                  pull_number: pr.number,
-                  event: 'COMMENT',
-                  body: '⚠️ 自动 rebase 失败，此 PR 存在无法自动解决的冲突，需要手动处理。'
+                  pull_number: pr.number
+                });
+
+                // 2. 找到新增的脚本文件（排除 index.json）
+                const scriptFiles = files.filter(f =>
+                  f.status === 'added' && f.filename !== 'script_library/index.json'
+                );
+
+                if (scriptFiles.length === 0) {
+                  core.warning(`PR #${pr.number}: No new script files found, skipping.`);
+                  continue;
+                }
+
+                // 3. 从 PR 分支获取每个脚本文件的内容
+                const scriptContents = [];
+                for (const sf of scriptFiles) {
+                  try {
+                    const { data: fileData } = await github.rest.repos.getContent({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      path: sf.filename,
+                      ref: branch
+                    });
+                    const content = Buffer.from(fileData.content, 'base64').toString('utf8');
+                    scriptContents.push({ path: sf.filename, content });
+                  } catch (e) {
+                    core.warning(`PR #${pr.number}: Failed to read ${sf.filename}: ${e.message}`);
+                  }
+                }
+
+                if (scriptContents.length === 0) {
+                  core.warning(`PR #${pr.number}: Could not read script content, skipping.`);
+                  continue;
+                }
+
+                // 4. 从 PR body 中提取元数据
+                const body = pr.body || '';
+                const field = (key) => {
+                  const re = new RegExp(`${key}[：:]\\s*(.+)`, 'i');
+                  const m = body.match(re);
+                  return m ? m[1].trim() : '';
+                };
+                const author = field('作者') || field('Author') || '社区投稿';
+                const category = field('分类') || field('Category') || 'basic';
+                const desc = field('描述') || field('Description') || pr.title;
+                const scriptName = pr.title.replace(/^\[投稿[：:]\s*\w+\]\s*/, '').replace(/^\[投稿\]\s*/, '').trim() || 'untitled';
+
+                const catMap = {
+                  '基础脚本': 'basic', 'basic': 'basic',
+                  'UI 界面': 'ui', 'UI': 'ui', 'ui': 'ui',
+                  '游戏': 'games', 'Games': 'games', 'games': 'games',
+                  '小组件': 'widgets', 'Widgets': 'widgets', 'widgets': 'widgets',
+                  '其他': 'other', 'Other': 'other', 'other': 'other'
+                };
+                const catId = catMap[category] || 'basic';
+
+                // 5. 基于最新 main 重建分支
+                execSync('git checkout main', { stdio: 'pipe' });
+                execSync('git pull origin main', { stdio: 'pipe' });
+
+                try {
+                  execSync(`git branch -D ${branch}`, { stdio: 'pipe' });
+                } catch (_) {}
+                execSync(`git checkout -b ${branch}`, { stdio: 'pipe' });
+
+                // 6. 写入脚本文件
+                for (const sc of scriptContents) {
+                  const dir = path.dirname(sc.path);
+                  fs.mkdirSync(dir, { recursive: true });
+                  fs.writeFileSync(sc.path, sc.content, 'utf8');
+                }
+
+                // 7. 读取最新 index.json 并添加条目
+                const indexPath = 'script_library/index.json';
+                const index = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+
+                const safeId = scriptName
+                  .toLowerCase()
+                  .replace(/[\s]+/g, '_')
+                  .replace(/[^a-z0-9_\u4e00-\u9fff]/g, '')
+                  .substring(0, 40) || `submission_${pr.number}`;
+                const scriptId = `community_${safeId}`;
+
+                // 去重：如果已存在则跳过
+                if (!index.scripts.some(s => s.id === scriptId)) {
+                  const mainScript = scriptContents[0];
+                  const lineCount = mainScript.content.split('\n').length;
+                  const fileType = path.extname(mainScript.path).replace('.', '') || 'py';
+
+                  index.data_version += 1;
+                  index.updated = new Date().toISOString().replace(/\.\d+Z$/, 'Z');
+                  index.scripts.push({
+                    id: scriptId,
+                    name: scriptName,
+                    name_en: scriptName,
+                    desc: desc,
+                    desc_en: desc,
+                    category: catId,
+                    file: mainScript.path.replace('script_library/', ''),
+                    thumbnail: null,
+                    version: 1,
+                    file_type: fileType,
+                    author: author,
+                    author_en: author,
+                    tags: ['community', catId],
+                    requires: [],
+                    min_app_version: '1.5.0',
+                    added: new Date().toISOString().split('T')[0],
+                    updated: null,
+                    status: 'active',
+                    lines: lineCount
+                  });
+                  fs.writeFileSync(indexPath, JSON.stringify(index, null, 2) + '\n', 'utf8');
+                }
+
+                // 8. 提交并 force push
+                execSync(`git add -A`, { stdio: 'pipe' });
+                execSync(`git commit -m "投稿: ${scriptName}" --allow-empty`, { stdio: 'pipe' });
+                execSync(`git push origin ${branch} --force`, { stdio: 'pipe' });
+
+                core.info(`✅ PR #${pr.number} rebuilt successfully on latest main.`);
+
+                // 切回 main
+                execSync('git checkout main', { stdio: 'pipe' });
+
+              } catch (e) {
+                core.warning(`❌ PR #${pr.number} rebuild failed: ${e.message}`);
+                try { execSync('git checkout main', { stdio: 'pipe' }); } catch (_) {}
+
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  body: '⚠️ 自动重建失败，可能需要手动处理。'
                 });
               }
             }
-
-            core.info(`\nDone. Succeeded: ${succeeded}, Failed: ${failed}`);
