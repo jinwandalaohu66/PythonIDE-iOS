@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 1,
-  "updated": "2026-03-18T12:00:00Z",
+  "data_version": 2,
+  "updated": "2026-03-18T07:20:12.862Z",
   "announcement": {
     "text": "🎮 6款内置游戏已上线，快来体验！",
     "text_en": "🎮 6 built-in games are now available!",
@@ -60,7 +60,11 @@
       "color": "#9B59B6"
     }
   ],
-  "featured": ["space_shooter", "neon_snake", "brick_breaker"],
+  "featured": [
+    "space_shooter",
+    "neon_snake",
+    "brick_breaker"
+  ],
   "scripts": [
     {
       "id": "brick_breaker",
@@ -75,7 +79,13 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": ["scene", "touch", "particle", "game", "brick"],
+      "tags": [
+        "scene",
+        "touch",
+        "particle",
+        "game",
+        "brick"
+      ],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
@@ -96,7 +106,13 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": ["scene", "touch", "particle", "game", "shooter"],
+      "tags": [
+        "scene",
+        "touch",
+        "particle",
+        "game",
+        "shooter"
+      ],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
@@ -117,7 +133,13 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": ["scene", "gravity", "accelerometer", "game", "maze"],
+      "tags": [
+        "scene",
+        "gravity",
+        "accelerometer",
+        "game",
+        "maze"
+      ],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
@@ -138,7 +160,13 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": ["scene", "touch", "game", "snake", "dpad"],
+      "tags": [
+        "scene",
+        "touch",
+        "game",
+        "snake",
+        "dpad"
+      ],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
@@ -159,7 +187,13 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": ["scene", "touch", "game", "jump", "endless"],
+      "tags": [
+        "scene",
+        "touch",
+        "game",
+        "jump",
+        "endless"
+      ],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
@@ -180,13 +214,42 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": ["scene", "touch", "game", "whack", "timer"],
+      "tags": [
+        "scene",
+        "touch",
+        "game",
+        "whack",
+        "timer"
+      ],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
       "updated": null,
       "status": "active",
       "lines": 427
+    },
+    {
+      "id": "hello_world_mmvpoksh",
+      "name": "Hello World 测试",
+      "name_en": "Hello World 测试",
+      "desc": "一个简单的测试脚本",
+      "desc_en": "一个简单的测试脚本",
+      "category": "basic",
+      "file": "scripts/basic/hello_world_mmvpoksh.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "测试用户",
+      "author_en": "测试用户",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-18",
+      "updated": null,
+      "status": "active",
+      "lines": 1
     }
   ]
 }
