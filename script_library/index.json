@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 2,
-  "updated": "2026-03-18T15:12:33.180Z",
+  "data_version": 1,
+  "updated": "2026-03-18T12:00:00Z",
   "announcement": null,
   "categories": [
     {
@@ -55,11 +55,7 @@
       "color": "#9B59B6"
     }
   ],
-  "featured": [
-    "space_shooter",
-    "neon_snake",
-    "brick_breaker"
-  ],
+  "featured": [],
   "scripts": [
     {
       "id": "brick_breaker",
@@ -74,13 +70,7 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": [
-        "scene",
-        "touch",
-        "particle",
-        "game",
-        "brick"
-      ],
+      "tags": ["scene", "touch", "particle", "game", "brick"],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
@@ -101,13 +91,7 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": [
-        "scene",
-        "touch",
-        "particle",
-        "game",
-        "shooter"
-      ],
+      "tags": ["scene", "touch", "particle", "game", "shooter"],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
@@ -128,13 +112,7 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": [
-        "scene",
-        "gravity",
-        "accelerometer",
-        "game",
-        "maze"
-      ],
+      "tags": ["scene", "gravity", "accelerometer", "game", "maze"],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
@@ -155,13 +133,7 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": [
-        "scene",
-        "touch",
-        "game",
-        "snake",
-        "dpad"
-      ],
+      "tags": ["scene", "touch", "game", "snake", "dpad"],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
@@ -182,13 +154,7 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": [
-        "scene",
-        "touch",
-        "game",
-        "jump",
-        "endless"
-      ],
+      "tags": ["scene", "touch", "game", "jump", "endless"],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
@@ -209,42 +175,13 @@
       "file_type": "py",
       "author": "官方",
       "author_en": "Official",
-      "tags": [
-        "scene",
-        "touch",
-        "game",
-        "whack",
-        "timer"
-      ],
+      "tags": ["scene", "touch", "game", "whack", "timer"],
       "requires": [],
       "min_app_version": "1.5.0",
       "added": "2026-03-18",
       "updated": null,
       "status": "active",
       "lines": 427
-    },
-    {
-      "id": "script_mmw6k09q",
-      "name": "计算器",
-      "name_en": "计算器",
-      "desc": "计算器脚本iOS原生风格",
-      "desc_en": "计算器脚本iOS原生风格",
-      "category": "ui",
-      "file": "scripts/ui/script_mmw6k09q.py",
-      "thumbnail": null,
-      "version": 1,
-      "file_type": "py",
-      "author": "今晚打老虎🐯",
-      "author_en": "今晚打老虎🐯",
-      "tags": [
-        "community"
-      ],
-      "requires": [],
-      "min_app_version": "1.5.0",
-      "added": "2026-03-18",
-      "updated": null,
-      "status": "active",
-      "lines": 144
     }
   ]
 }
