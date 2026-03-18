@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 3,
-  "updated": "2026-03-18T15:31:06.760Z",
+  "data_version": 4,
+  "updated": "2026-03-18T16:08:23.869Z",
   "announcement": null,
   "categories": [
     {
@@ -264,6 +264,29 @@
       "updated": null,
       "status": "active",
       "lines": 603
+    },
+    {
+      "id": "script_mmw8jszb",
+      "name": "霓虹塔防",
+      "name_en": "霓虹塔防",
+      "desc": "塔防游戏总共十次进攻",
+      "desc_en": "塔防游戏总共十次进攻",
+      "category": "games",
+      "file": "scripts/games/script_mmw8jszb.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "今晚打老虎",
+      "author_en": "今晚打老虎",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-18",
+      "updated": null,
+      "status": "active",
+      "lines": 616
     }
   ]
 }
