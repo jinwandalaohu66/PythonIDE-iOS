@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 3,
-  "updated": "2026-03-18T15:31:06.760Z",
+  "data_version": 4,
+  "updated": "2026-03-18T16:09:07.983Z",
   "announcement": null,
   "categories": [
     {
@@ -264,6 +264,29 @@
       "updated": null,
       "status": "active",
       "lines": 603
+    },
+    {
+      "id": "script_mmw8krjd",
+      "name": "水果忍者",
+      "name_en": "水果忍者",
+      "desc": "水果忍者超炫酷游戏",
+      "desc_en": "水果忍者超炫酷游戏",
+      "category": "games",
+      "file": "scripts/games/script_mmw8krjd.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "今晚打老虎",
+      "author_en": "今晚打老虎",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-18",
+      "updated": null,
+      "status": "active",
+      "lines": 616
     }
   ]
 }
