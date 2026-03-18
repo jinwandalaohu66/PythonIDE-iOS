@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 6,
-  "updated": "2026-03-18T16:36:42.671Z",
+  "data_version": 7,
+  "updated": "2026-03-18T16:39:32Z",
   "announcement": null,
   "categories": [
     {
@@ -333,6 +333,30 @@
       "updated": null,
       "status": "active",
       "lines": 563
+    },
+    {
+      "id": "community_2048游戏__by_今晚打老虎",
+      "name": "2048游戏 — by 今晚打老虎🐯",
+      "name_en": "2048游戏 — by 今晚打老虎🐯",
+      "desc": "[投稿] 2048游戏 — by 今晚打老虎🐯",
+      "desc_en": "[投稿] 2048游戏 — by 今晚打老虎🐯",
+      "category": "basic",
+      "file": "scripts/games/2048_mmw9n427.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "社区投稿",
+      "author_en": "社区投稿",
+      "tags": [
+        "community",
+        "basic"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-18",
+      "updated": null,
+      "status": "active",
+      "lines": 560
     }
   ]
 }
