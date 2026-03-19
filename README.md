@@ -10,21 +10,20 @@
 
 <p align="center">
   <a href="https://apps.apple.com/app/id6753987304">
-    <img src="https://img.shields.io/badge/App%20Store-免费下载-black?style=for-the-badge&logo=apple" alt="Download on App Store" height="44" />
+    <img src="https://img.shields.io/badge/App%20Store-下载-black?style=for-the-badge&logo=apple" alt="Download on App Store" height="44" />
   </a>
   &nbsp;
-  <a href="https://github.com/jinwandalaohu66/PythonIDE-Landing">
-    <img src="https://img.shields.io/github/stars/jinwandalaohu66/PythonIDE-Landing?style=for-the-badge&logo=github&color=orange" alt="GitHub Stars" height="44" />
+  <a href="https://github.com/jinwandalaohu66/PythonIDE-iOS">
+    <img src="https://img.shields.io/github/stars/jinwandalaohu66/PythonIDE-iOS?style=for-the-badge&logo=github" alt="GitHub Stars" height="44" />
   </a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/iOS-16.2+-007AFF?style=flat-square&logo=apple" />
-  <img src="https://img.shields.io/badge/Python-3.13-3776AB?style=flat-square&logo=python" />
-  <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black" />
-  <img src="https://img.shields.io/badge/Swift-5.9-FA7343?style=flat-square&logo=swift" />
-  <img src="https://img.shields.io/badge/C_Extensions-12+-44CC11?style=flat-square" />
-  <img src="https://img.shields.io/badge/Prebuilt_Wheels-150+-8A2BE2?style=flat-square" />
+  <img src="https://img.shields.io/badge/iOS-16.2+-blue?style=flat-square" alt="iOS 16.2+" />
+  <img src="https://img.shields.io/badge/Python-3.13-3776AB?style=flat-square&logo=python" alt="Python 3.13" />
+  <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/Swift-5.9-FA7343?style=flat-square&logo=swift" alt="Swift" />
+  <img src="https://img.shields.io/badge/C_Extensions-12+-brightgreen?style=flat-square" alt="C Extensions" />
 </p>
 
 ---
@@ -282,6 +281,174 @@ Pythonista 兼容的 UI 模块，用 Python 创建原生 iOS 界面（View、But
 
 - **[UI 模块完整文档（中文）](docs/ui-module-zh.md)** · [Full docs (English)](docs/ui-module-en.md)
 
+#### 🎮 scene 模块 — 2D 游戏引擎
+
+Pythonista 兼容的 Scene 模块，用 Python 开发 2D 游戏和动画。底层基于 SpriteKit，提供**两种开发模式**：经典逐帧绘制（`draw()`）和现代节点树（Node + Action）。
+
+##### 节点体系
+
+| 节点 | 说明 |
+|------|------|
+| **`Node`** | 基础节点，支持 `position`、`rotation`、`alpha`、`z_position`、`physics_body` |
+| **`SpriteNode`** | 精灵节点，加载图片纹理，支持 `color`、`size`、`anchor_point` |
+| **`LabelNode`** | 文字节点，支持 `font`、`color`、`alignment` |
+| **`ShapeNode`** | 形状节点，支持矩形（可圆角）、椭圆，可设 `fill_color`、`stroke_color` |
+| **`EmitterNode`** | 粒子发射器节点 |
+
+##### Action 动画系统（14 种动作）
+
+| 动作 | 说明 |
+|------|------|
+| `move_to` / `move_by` | 移动到绝对位置 / 相对偏移 |
+| `rotate_to` / `rotate_by` | 旋转到角度 / 旋转偏移量 |
+| `scale_to` / `scale_by` | 缩放到倍数 / 缩放偏移 |
+| `fade_to` / `fade_by` | 淡入淡出到透明度 / 透明度偏移 |
+| `sequence` | 按顺序执行一组动作 |
+| `group` | 同时并行执行一组动作 |
+| `repeat` / `repeat_forever` | 重复执行 N 次 / 无限循环 |
+| `wait` | 等待指定秒数 |
+| `call` | 执行回调函数 |
+| `remove` | 从父节点移除 |
+
+所有动作支持 **16 种缓动曲线**：`TIMING_LINEAR`、`TIMING_EASE_IN/OUT`、`TIMING_ELASTIC_IN/OUT`、`TIMING_BOUNCE_IN/OUT`、`TIMING_EASE_BACK_IN/OUT` 等。
+
+##### 物理引擎
+
+| 功能 | 说明 |
+|------|------|
+| **`PhysicsWorld`** | 场景物理世界，可设置 `gravity` 全局重力 |
+| **`PhysicsBody`** | 物理体，支持 `rectangle(w,h)` 和 `circle(r)` 两种形状 |
+| **碰撞属性** | `restitution`（弹性）、`friction`（摩擦）、`linear_damping`（阻尼）、`velocity`（速度） |
+| **碰撞检测** | `category_bitmask`、`collision_bitmask`、`contact_test_bitmask` 位掩码 |
+| **`Contact`** | 碰撞回调，包含 `node_a`、`node_b`、`contact_point`、`collision_impulse` |
+| **力与冲量** | `apply_impulse(x, y)` 施加冲量 |
+| **关节** | `PinJoint`（铰链）、`SpringJoint`（弹簧）、`RopeJoint`（绳索） |
+
+##### 经典绘图 API（scene_drawing）
+
+在 `Scene.draw()` 中使用的逐帧绘制函数，适合快速原型和简单动画：
+
+| 函数 | 说明 |
+|------|------|
+| `background(r,g,b)` | 填充背景色 |
+| `fill(r,g,b,a)` / `no_fill()` | 设置 / 取消填充色 |
+| `stroke(r,g,b,a)` / `no_stroke()` | 设置 / 取消描边色 |
+| `stroke_weight(w)` | 设置描边宽度 |
+| `rect(x,y,w,h)` | 绘制矩形（支持圆角） |
+| `ellipse(x,y,w,h)` | 绘制椭圆 |
+| `line(x1,y1,x2,y2)` | 绘制线段 |
+| `image(name,x,y,w,h)` | 绘制图片 |
+| `text(txt,font,size,x,y)` | 绘制文字 |
+| `tint(r,g,b,a)` / `no_tint()` | 设置 / 取消图片着色 |
+| `translate` / `rotate` / `scale` | 矩阵变换 |
+| `push_matrix` / `pop_matrix` | 保存 / 恢复变换状态 |
+| `load_image_file(path)` | 从文件加载图片 |
+| `render_text(txt,font,size)` | 将文字渲染为纹理 |
+
+##### 其他功能
+
+| 功能 | 说明 |
+|------|------|
+| `Scene.touch_began/moved/ended` | 多点触摸事件回调 |
+| `Scene.present_modal_scene` | 模态场景（菜单、暂停画面等） |
+| `Scene.did_change_size` | 屏幕旋转回调 |
+| `run(scene, orientation, show_fps)` | 启动场景，支持竖屏/横屏/自动 |
+| `get_screen_size()` / `get_screen_scale()` | 屏幕尺寸与缩放因子 |
+| `gravity()` | 读取设备重力传感器（陀螺仪） |
+| `play_effect(name)` | 播放音效 |
+| `Texture(name)` | 加载纹理资源 |
+| `Shader(source)` | 自定义着色器 |
+| `SceneView` | 将场景嵌入 `ui.View` 中 |
+
+##### 代码示例
+
+```python
+from scene import *
+
+class MyGame(Scene):
+    def setup(self):
+        self.background_color = (0.05, 0.05, 0.15)
+        self.player = SpriteNode('plc:Alien_Green',
+                                  position=self.size / 2,
+                                  parent=self)
+
+    def touch_began(self, touch):
+        self.player.run_action(
+            Action.move_to(*touch.location, 0.3, TIMING_EASE_OUT)
+        )
+
+run(MyGame())
+```
+
+应用内置 **16 款游戏示例**，包括贪吃蛇、Flappy Bird、打砖块、2048、水果忍者、俄罗斯方块、塔防、节奏大师、太空射击、打地鼠、重力迷宫等，可直接运行学习。
+
+#### 📲 widget 模块 — iOS 桌面小组件
+
+用 Python 创建 **iOS 桌面小组件**，脚本运行后自动渲染到主屏幕。支持声明式布局 DSL 和快捷模板两种模式。
+
+##### 支持的组件（14 种）
+
+| 组件 | 方法 | 说明 |
+|------|------|------|
+| **文字** | `w.text(content, size, weight, color, align, max_lines, design)` | 支持字号、字重、颜色、对齐、行数限制、字体设计（`rounded` / `monospaced` / `serif`） |
+| **图标** | `w.icon(name, size, color, weight)` | SF Symbol 图标，支持 6000+ 系统图标 |
+| **Emoji** | `w.emoji(content, size)` | Emoji 表情，支持自定义大小 |
+| **间距** | `w.spacer(length)` | 弹性间距或固定间距 |
+| **分割线** | `w.divider(color, opacity)` | 水平分割线 |
+| **进度条** | `w.progress(value, total, color, height, track_color)` | 线性进度条，支持自定义颜色和轨道色 |
+| **仪表盘** | `w.gauge(value, total, label, size, color, track_color, line_width)` | 圆形仪表盘，支持中心文字 |
+| **实时计时** | `w.timer(target, style, size, weight, color)` | WidgetKit 原生倒计时，无需刷新；支持 `timer` / `relative` / `date` / `time` / `offset` 五种样式 |
+| **图片** | `w.image(name, width, height, corner_radius, content_mode)` | 显示通过 `save_image()` 缓存的图片，支持 `fit` / `fill` |
+| **水平布局** | `w.hstack(spacing, align, background, corner_radius, url)` | `with` 语法，支持嵌套 |
+| **垂直布局** | `w.vstack(...)` | 同上 |
+| **叠加布局** | `w.zstack(...)` | 多层叠加 |
+| **卡片** | `w.card(background, corner_radius, padding, border_color, border_width, url)` | 带圆角、背景、边框的容器 |
+| **渲染输出** | `w.render(url)` | 输出最终布局，可设置点击跳转 URL |
+
+##### 小组件尺寸
+
+| 常量 | 说明 |
+|------|------|
+| `SMALL` | 主屏幕小组件（2×2） |
+| `MEDIUM` | 主屏幕中组件（4×2） |
+| `LARGE` | 主屏幕大组件（4×4） |
+| `CIRCULAR` | 锁屏圆形小组件 |
+| `RECTANGULAR` | 锁屏矩形小组件 |
+| `INLINE` | 锁屏行内小组件 |
+
+通过 `widget.family` 获取当前尺寸，按需适配不同布局。
+
+##### 特色功能
+
+- **深色模式适配**：颜色支持 `(light_color, dark_color)` 元组，自动跟随系统
+- **渐变背景**：`{"gradient": ["#FF6B6B", "#4ECDC4"], "direction": "diagonal"}`，支持 4 个方向
+- **图片缓存**：`save_image(source, name)` 支持文件路径和 bytes，自动压缩（限 512KB）
+- **深链跳转**：容器和 `render()` 支持 `url` 参数，点击小组件跳转到指定页面
+- **快捷模板**：`widget.show(title, value, progress, rows)` 一行代码生成常用布局
+
+##### 代码示例
+
+```python
+from widget import Widget, family, SMALL, MEDIUM
+
+w = Widget(background=("#1a1a2e", "#0f0f1a"))
+
+with w.vstack(spacing=8, padding=12):
+    w.text("🔥 今日目标", size=13, color="#aaa")
+    with w.hstack(spacing=12):
+        w.gauge(0.75, label="75%", size=50,
+                color="#FF6B6B", track_color="#333")
+        with w.vstack(spacing=4, align="leading"):
+            w.text("步数 8,432", size=14, weight="semibold", color="white")
+            w.text("目标 10,000", size=12, color="#888")
+    w.divider(color="#333")
+    w.progress(0.6, color="#4ECDC4", height=6, track_color="#222")
+
+w.render()
+```
+
+应用内置 **8 款小组件示例**，包括健身环、习惯追踪、学习计时、货币汇率、音乐播放器等，可直接运行体验。
+
 ---
 
 ### 🔒 隐私与个性化
@@ -302,27 +469,27 @@ Pythonista 兼容的 UI 模块，用 Python 创建原生 iOS 界面（View、But
 
 | 首页 | 编辑器 |
 |:---:|:---:|
-| <img src="docs/首页.png" width="280"/> | <img src="docs/编辑页面.png" width="280"/> |
+| <img src="docs/首页.png" width="280" /> | <img src="docs/编辑页面.png" width="280" /> |
 | 文件管理、颜色标记、置顶、搜索、批量操作、回收站 | 语法高亮、智能补全、快捷输入栏、查找替换、分屏 |
 
 | 控制台 | AI 助手 |
 |:---:|:---:|
-| <img src="docs/控制台页面.png" width="280"/> | <img src="docs/AI分析.png" width="280"/> |
+| <img src="docs/控制台页面.png" width="280" /> | <img src="docs/AI分析.png" width="280" /> |
 | Rich 彩色输出、进度条、多控制台切换、交互式 input() | Diff 差异对比、逐条采纳/拒绝、一键修复报错、智能装库 |
 
 | 库管理 | 工具箱 |
 |:---:|:---:|
-| <img src="docs/库管理.png" width="280"/> | <img src="docs/工具箱.png" width="280"/> |
+| <img src="docs/库管理.png" width="280" /> | <img src="docs/工具箱.png" width="280" /> |
 | PyPI 搜索安装、热门库分类、进度条、版本管理、一键卸载 | 编解码、JSON、API 调试、二维码、时间戳、正则、直链下载 |
 
 | HTML 预览 | Markdown 渲染 |
 |:---:|:---:|
-| <img src="docs/html预览.png" width="280"/> | <img src="docs/md文件.png" width="280"/> |
+| <img src="docs/html预览.png" width="280" /> | <img src="docs/md文件.png" width="280" /> |
 | 全屏网页渲染、双指缩放、alert/console 桥接 | 实时渲染，支持标题、列表、代码块、表格、任务列表 |
 
 | 新建文件 | 设置 |
 |:---:|:---:|
-| <img src="docs/新建文件.png" width="280"/> | <img src="docs/设置.png" width="280"/> |
+| <img src="docs/新建文件.png" width="280" /> | <img src="docs/设置.png" width="280" /> |
 | 支持 py/js/html/css/md/json 等多种格式，可设置颜色标记 | 外观、编辑器字体、AI 配置、应用锁定、快捷指令帮助 |
 
 ---
@@ -331,7 +498,7 @@ Pythonista 兼容的 UI 模块，用 Python 创建原生 iOS 界面（View、But
 
 <p align="center">
   <a href="https://apps.apple.com/app/id6753987304">
-    <img src="https://img.shields.io/badge/App%20Store-立即下载-black?style=for-the-badge&logo=apple&logoColor=white" height="50" />
+    <img src="https://img.shields.io/badge/App%20Store-下载-black?style=for-the-badge&logo=apple" alt="Download on App Store" height="44" />
   </a>
 </p>
 
@@ -364,8 +531,7 @@ Pythonista 兼容的 UI 模块，用 Python 创建原生 iOS 界面（View、But
 - **应用内捐赠** — 支持 🍭 棒棒糖 / 🍗 鸡腿 / 🧋 奶茶 三个档位，捐赠后可解锁专属 App 图标
 
 <p align="center">
-  <img src="docs/donate-qr.jpeg" width="180" alt="赞赏码" />
-  <br/>
+  <img src="docs/赞赏码.jpg" width="200" alt="赞赏码" /><br/>
   <em>扫码赞赏 · Thank you for your support ♥</em>
 </p>
 
@@ -373,7 +539,7 @@ Pythonista 兼容的 UI 模块，用 Python 创建原生 iOS 界面（View、But
 
 ## 🙏 致谢 / Thanks
 
-感谢所有使用、反馈和支持 PythonIDE 的开发者们。  
+感谢所有使用、反馈和支持 PythonIDE 的开发者们。
 每一条反馈都推动着这个项目变得更好。
 
 <p align="center">
@@ -384,6 +550,6 @@ Pythonista 兼容的 UI 模块，用 Python 创建原生 iOS 界面（View、But
 
 <p align="center">
   <sub>
-    <strong>Topics</strong> · ios · python · javascript · ide · numpy · pillow · cryptography · app-intents · siri · shortcuts · live-activity · mobile-development · swift · scripting · developer-tools
+    <strong>Topics</strong> · ios · python · javascript · ide · numpy · pillow · cryptography · app-intents · siri · shortcuts · live-activity · mobile-development · swift · scripting · developer-tools · game-engine · widgets
   </sub>
 </p>
