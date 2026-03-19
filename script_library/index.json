@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 9,
-  "updated": "2026-03-19T06:20:23.291Z",
+  "data_version": 10,
+  "updated": "2026-03-19T08:48:04.318Z",
   "announcement": null,
   "categories": [
     {
@@ -403,6 +403,29 @@
       "updated": null,
       "status": "active",
       "lines": 96
+    },
+    {
+      "id": "script_mmx89esh",
+      "name": "飞鸟",
+      "name_en": "飞鸟",
+      "desc": "太难了第一个柱子都过不了",
+      "desc_en": "太难了第一个柱子都过不了",
+      "category": "games",
+      "file": "scripts/games/script_mmx89esh.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "伟大的我",
+      "author_en": "伟大的我",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-19",
+      "updated": null,
+      "status": "active",
+      "lines": 201
     }
   ]
 }
