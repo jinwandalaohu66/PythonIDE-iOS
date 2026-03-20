@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 12,
-  "updated": "2026-03-20T10:08:23.591Z",
+  "data_version": 13,
+  "updated": "2026-03-20T13:43:04.881Z",
   "announcement": null,
   "categories": [
     {
@@ -472,6 +472,29 @@
       "updated": null,
       "status": "active",
       "lines": 51
+    },
+    {
+      "id": "script_mmyy8nf3",
+      "name": "计算器",
+      "name_en": "计算器",
+      "desc": "灰太狼开发",
+      "desc_en": "灰太狼开发",
+      "category": "ui",
+      "file": "scripts/ui/script_mmyy8nf3.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "计算器",
+      "author_en": "计算器",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-20",
+      "updated": null,
+      "status": "active",
+      "lines": 222
     }
   ]
 }
