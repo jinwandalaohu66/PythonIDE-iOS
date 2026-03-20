@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 11,
-  "updated": "2026-03-19T15:52:16.644Z",
+  "data_version": 12,
+  "updated": "2026-03-20T10:08:23.591Z",
   "announcement": null,
   "categories": [
     {
@@ -449,6 +449,29 @@
       "updated": null,
       "status": "active",
       "lines": 85
+    },
+    {
+      "id": "cookie_mmyqkjvd",
+      "name": "解析 Cookie，请认真看上面的提醒哦。",
+      "name_en": "解析 Cookie，请认真看上面的提醒哦。",
+      "desc": "这就是解析 Cookie",
+      "desc_en": "这就是解析 Cookie",
+      "category": "basic",
+      "file": "scripts/basic/cookie_mmyqkjvd.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "Silence",
+      "author_en": "Silence",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-20",
+      "updated": null,
+      "status": "active",
+      "lines": 51
     }
   ]
 }
