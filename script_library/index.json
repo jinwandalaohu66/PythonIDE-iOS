@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 15,
-  "updated": "2026-03-21T14:55:45.667Z",
+  "data_version": 16,
+  "updated": "2026-03-22T13:10:35.014Z",
   "announcement": null,
   "categories": [
     {
@@ -541,6 +541,29 @@
       "updated": null,
       "status": "active",
       "lines": 325
+    },
+    {
+      "id": "flight_mn1ryk35",
+      "name": "flight",
+      "name_en": "flight",
+      "desc": "一个供参考的文本模型，能生成简单但意思不全的句子",
+      "desc_en": "一个供参考的文本模型，能生成简单但意思不全的句子",
+      "category": "basic",
+      "file": "scripts/basic/flight_mn1ryk35.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "ioo",
+      "author_en": "ioo",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-22",
+      "updated": null,
+      "status": "active",
+      "lines": 69
     }
   ]
 }
