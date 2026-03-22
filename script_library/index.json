@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 14,
-  "updated": "2026-03-20T14:18:52.520Z",
+  "data_version": 15,
+  "updated": "2026-03-21T14:55:45.667Z",
   "announcement": null,
   "categories": [
     {
@@ -518,6 +518,29 @@
       "updated": null,
       "status": "active",
       "lines": 85
+    },
+    {
+      "id": "script_mn0g9yri",
+      "name": "火柴人搭桥",
+      "name_en": "火柴人搭桥",
+      "desc": "经典搭桥小游戏，用手指按在屏幕上，桥就会开始增加长度.你要在两根柱子之间正确的把桥搭好才能正确过关，过长过短都会掉下悬崖！考验你的距离敏感度！",
+      "desc_en": "经典搭桥小游戏，用手指按在屏幕上，桥就会开始增加长度.你要在两根柱子之间正确的把桥搭好才能正确过关，过长过短都会掉下悬崖！考验你的距离敏感度！",
+      "category": "games",
+      "file": "scripts/games/script_mn0g9yri.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "XiaoYuan",
+      "author_en": "XiaoYuan",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-21",
+      "updated": null,
+      "status": "active",
+      "lines": 325
     }
   ]
 }
