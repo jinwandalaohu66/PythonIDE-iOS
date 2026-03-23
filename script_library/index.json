@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 21,
-  "updated": "2026-03-23T15:51:12.822Z",
+  "data_version": 22,
+  "updated": "2026-03-23T15:51:27.174Z",
   "announcement": null,
   "categories": [
     {
@@ -448,7 +448,8 @@
       "added": "2026-03-19",
       "updated": null,
       "removed": "active",
-      "lines": 85
+      "lines": 85,
+      "status": "removed"
     },
     {
       "id": "cookie_mmyqkjvd",
