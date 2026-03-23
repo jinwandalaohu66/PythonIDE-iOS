@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 19,
-  "updated": "2026-03-23T13:11:29.200Z",
+  "data_version": 20,
+  "updated": "2026-03-23T15:51:00.539Z",
   "announcement": null,
   "categories": [
     {
@@ -471,7 +471,8 @@
       "added": "2026-03-20",
       "updated": null,
       "removed": "active",
-      "lines": 51
+      "lines": 51,
+      "status": "removed"
     },
     {
       "id": "script_mmyy8nf3",
