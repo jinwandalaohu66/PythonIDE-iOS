@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 17,
-  "updated": "2026-03-22T19:54:07.067Z",
+  "data_version": 18,
+  "updated": "2026-03-23T13:08:52.777Z",
   "announcement": null,
   "categories": [
     {
@@ -587,6 +587,29 @@
       "updated": null,
       "status": "active",
       "lines": 971
+    },
+    {
+      "id": "2_0_mn37c7pr",
+      "name": "联通小组件2.0",
+      "name_en": "联通小组件2.0",
+      "desc": "联通流量小组件显示，无需每次打开软件进行刷新，它会自己后台悄悄的更新哦，根据需要填写的脚本里有提示，注意查看。",
+      "desc_en": "联通流量小组件显示，无需每次打开软件进行刷新，它会自己后台悄悄的更新哦，根据需要填写的脚本里有提示，注意查看。",
+      "category": "widgets",
+      "file": "scripts/widgets/2_0_mn37c7pr.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "Silence",
+      "author_en": "Silence",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-23",
+      "updated": null,
+      "status": "active",
+      "lines": 100
     }
   ]
 }
