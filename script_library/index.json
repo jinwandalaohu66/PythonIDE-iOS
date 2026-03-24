@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 24,
-  "updated": "2026-03-24T04:55:23.217Z",
+  "data_version": 25,
+  "updated": "2026-03-24T04:56:02.107Z",
   "announcement": null,
   "categories": [
     {
@@ -635,6 +635,29 @@
       "updated": null,
       "status": "active",
       "lines": 92
+    },
+    {
+      "id": "2048_mn4569dx",
+      "name": "2048游戏",
+      "name_en": "2048游戏",
+      "desc": "经典的2048小游戏非常好玩",
+      "desc_en": "经典的2048小游戏非常好玩",
+      "category": "games",
+      "file": "scripts/games/2048_mn4569dx.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "今晚打老虎",
+      "author_en": "今晚打老虎",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-24",
+      "updated": null,
+      "status": "active",
+      "lines": 560
     }
   ]
 }
