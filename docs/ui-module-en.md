@@ -1090,4 +1090,4 @@ ui.animate(animation, duration=0.25, delay_sec=0.0, completion=None)
 
 ---
 
-*Document version: 2025-03 · For Python IDE iOS app*
+*Document version: 2026-03 · For Python IDE iOS app*
