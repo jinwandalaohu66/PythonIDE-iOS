@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 25,
-  "updated": "2026-03-24T04:56:02.107Z",
+  "data_version": 26,
+  "updated": "2026-03-25T22:41:30.062Z",
   "announcement": null,
   "categories": [
     {
@@ -658,6 +658,29 @@
       "updated": null,
       "status": "active",
       "lines": 560
+    },
+    {
+      "id": "script_mn6mob7u",
+      "name": "七月单次电话",
+      "name_en": "七月单次电话",
+      "desc": "可以机器人给打电话，仅供学习！",
+      "desc_en": "可以机器人给打电话，仅供学习！",
+      "category": "basic",
+      "file": "scripts/basic/script_mn6mob7u.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "七月",
+      "author_en": "七月",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-25",
+      "updated": null,
+      "status": "active",
+      "lines": 57
     }
   ]
 }
