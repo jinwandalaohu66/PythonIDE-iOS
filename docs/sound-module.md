@@ -197,17 +197,17 @@ sound.set_honors_silent_switch(flag)
 | Bundle 文件名 | `'click.caf'` | 在 app bundle 中查找 |
 | 相对路径 | `'sounds/bgm.mp3'` | 先找当前目录，再找 Documents |
 
-**Pythonista 内置音效分类**：
+**内置 149 个音效（CC0 来源 Kenney.nl），7 大分类**：
 
-| 分类 | 示例 |
-|------|------|
-| `game:` | `game:Beep` `game:Error` `game:Powerup` `game:Clock_1` |
-| `arcade:` | `arcade:Coin_1` `arcade:Jump_1` `arcade:Explosion_1` |
-| `ui:` | `ui:click1` `ui:click2` |
-| `digital:` | `digital:PowerUp7` `digital:ZapThreeToneUp` |
-| `casino:` | `casino:DiceThrow3` `casino:ChipsStack5` |
-| `drums:` | `drums:Drums_06` |
-| `piano:` | `piano:C3` `piano:A4` |
+| 分类 | 数量 | 完整列表 |
+|------|------|------|
+| `game:` | 34 | `Beep` `Error` `Error_2` `Error_3` `Powerup` `Ding_1`~`Ding_3` `Clock_1`~`Clock_3` `Hit_1`~`Hit_4` `Drop_1` `Drop_2` `Pluck_1` `Pluck_2` `Glass_1` `Glass_2` `Swoosh_1`~`Swoosh_3` `Open_1` `Open_2` `Close_1` `Close_2` `Select_1` `Select_2` `Glitch_1` `Glitch_2` `Question_1` `Scratch_1` |
+| `arcade:` | 13 | `Coin_1` `Coin_2` `Jump_1`~`Jump_3` `Explosion_1`~`Explosion_3` `Laser_1`~`Laser_3` `Zap_1` `Zap_2` |
+| `ui:` | 12 | `click1`~`click5` `switch1`~`switch3` `rollover1` `rollover2` `mouseclick1` `mouserelease1` |
+| `digital:` | 34 | `PowerUp1`~`PowerUp12` `Laser1`~`Laser9` `Zap1` `Zap2` `HighUp` `HighDown` `LowDown` `LowRandom` `PepSound1` `PepSound2` `Tone1` `TwoTone1` `TwoTone2` `ThreeTone1` `ThreeTone2` |
+| `casino:` | 15 | `DiceThrow1`~`DiceThrow3` `DiceShake1` `DiceShake2` `CardPlace1` `CardPlace2` `CardSlide1` `CardSlide2` `CardShuffle` `ChipsCollide1` `ChipsCollide2` `ChipsHandle1` `ChipLay1` `ChipLay2` |
+| `rpg:` | 25 | `DoorOpen_1` `DoorOpen_2` `DoorClose_1` `DoorClose_2` `BookOpen` `BookClose` `BookFlip_1` `BookFlip_2` `Chop` `KnifeSlice_1` `KnifeSlice_2` `DrawKnife_1` `MetalClick` `MetalLatch` `Creak_1` `Creak_2` `Cloth_1` `DropLeather` `Footstep_1`~`Footstep_3` `FootstepGrass_1` `FootstepGrass_2` `FootstepWood_1` `FootstepWood_2` |
+| `music:` | 16 | `Victory_NES_1` `Victory_NES_2` `GameOver_NES_1` `LevelUp_NES_1` `Start_NES_1` `Bonus_NES_1` `Victory_Pizzi_1` `GameOver_Pizzi_1` `LevelUp_Pizzi_1` `Victory_Steel_1` `GameOver_Steel_1` `LevelUp_Steel_1` `Victory_Sax_1` `GameOver_Sax_1` `Victory_Hit_1` `GameOver_Hit_1` |
 
 **支持的音频格式**：`.caf` `.wav` `.mp3` `.aiff` `.m4a`
 
@@ -219,11 +219,18 @@ sound.set_honors_silent_switch(flag)
 
 | 场景 | 建议 |
 |------|------|
-| 碰撞/反弹 | `sound.play_effect('game:Beep', volume=0.3)` |
+| 碰撞/反弹 | `sound.play_effect('game:Hit_1', volume=0.3)` |
 | 得分 | `sound.play_effect('arcade:Coin_1')` |
 | 玩家点击 | `sound.play_effect('ui:click1', volume=0.5)` |
 | 升级/奖励 | `sound.play_effect('game:Powerup')` |
 | 失败/错误 | `sound.play_effect('game:Error')` |
+| 跳跃 | `sound.play_effect('arcade:Jump_1')` |
+| 爆炸 | `sound.play_effect('arcade:Explosion_1')` |
+| 挥动/呼啸 | `sound.play_effect('game:Swoosh_1')` |
+| 胜利过关 | `sound.play_effect('music:Victory_NES_1')` |
+| 游戏结束 | `sound.play_effect('music:GameOver_NES_1')` |
+| 开门 | `sound.play_effect('rpg:DoorOpen_1')` |
+| 脚步声 | `sound.play_effect('rpg:Footstep_1')` |
 | 背景音乐 | `bgm = sound.Player('music.mp3'); bgm.number_of_loops = -1; bgm.play()` |
 
 ---
