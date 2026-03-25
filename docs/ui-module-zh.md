@@ -1161,4 +1161,4 @@ ui.animate(animation, duration=0.25, delay_sec=0.0, completion=None)
 
 ---
 
-*文档版本：2025-03 · 适用于 Python IDE iOS 应用*
+*文档版本：2026-03 · 适用于 Python IDE iOS 应用*
