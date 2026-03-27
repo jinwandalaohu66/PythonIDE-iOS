@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 30,
-  "updated": "2026-03-27T10:08:56Z",
+  "data_version": 31,
+  "updated": "2026-03-27T15:15:38.324Z",
   "announcement": null,
   "categories": [
     {
@@ -775,6 +775,29 @@
       "updated": null,
       "status": "active",
       "lines": 98
+    },
+    {
+      "id": "script_mn91mn1t",
+      "name": "每日一词",
+      "name_en": "每日一词",
+      "desc": "每日一词",
+      "desc_en": "每日一词",
+      "category": "widgets",
+      "file": "scripts/widgets/script_mn91mn1t.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "一只菜鸡",
+      "author_en": "一只菜鸡",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-27",
+      "updated": null,
+      "status": "active",
+      "lines": 113
     }
   ]
 }
