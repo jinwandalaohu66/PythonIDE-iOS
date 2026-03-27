@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 28,
-  "updated": "2026-03-26T17:07:22Z",
+  "data_version": 29,
+  "updated": "2026-03-27T09:16:55.631Z",
   "announcement": null,
   "categories": [
     {
@@ -728,6 +728,29 @@
       "updated": null,
       "status": "active",
       "lines": 471
+    },
+    {
+      "id": "guess_number_mn8otc34",
+      "name": "guess_number",
+      "name_en": "guess_number",
+      "desc": "猜数字",
+      "desc_en": "猜数字",
+      "category": "games",
+      "file": "scripts/games/guess_number_mn8otc34.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "Yahoo",
+      "author_en": "Yahoo",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-27",
+      "updated": null,
+      "status": "active",
+      "lines": 116
     }
   ]
 }
