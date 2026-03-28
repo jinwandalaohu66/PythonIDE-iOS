@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 32,
-  "updated": "2026-03-28T03:12:59.398Z",
+  "data_version": 33,
+  "updated": "2026-03-28T07:22:26.154Z",
   "announcement": null,
   "categories": [
     {
@@ -821,6 +821,29 @@
       "updated": null,
       "status": "active",
       "lines": 87
+    },
+    {
+      "id": "script_mna05y9m",
+      "name": "今日油价",
+      "name_en": "今日油价",
+      "desc": "CITY_NAME = \"北京\"  # ← 在这里修改城市名称",
+      "desc_en": "CITY_NAME = \"北京\"  # ← 在这里修改城市名称",
+      "category": "widgets",
+      "file": "scripts/widgets/script_mna05y9m.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "一只菜鸡",
+      "author_en": "一只菜鸡",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-28",
+      "updated": null,
+      "status": "active",
+      "lines": 312
     }
   ]
 }
