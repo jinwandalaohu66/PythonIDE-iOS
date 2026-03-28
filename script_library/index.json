@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 36,
-  "updated": "2026-03-28T14:56:23.971Z",
+  "data_version": 37,
+  "updated": "2026-03-28T15:25:39.892Z",
   "announcement": null,
   "categories": [
     {
@@ -913,6 +913,29 @@
       "updated": null,
       "status": "active",
       "lines": 178
+    },
+    {
+      "id": "script_mnahfe4x",
+      "name": "谷歌热点新闻",
+      "name_en": "谷歌热点新闻",
+      "desc": "直接爬取谷歌热点新闻，可以选择保存为txt",
+      "desc_en": "直接爬取谷歌热点新闻，可以选择保存为txt",
+      "category": "basic",
+      "file": "scripts/basic/script_mnahfe4x.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "爬虫专家",
+      "author_en": "爬虫专家",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-28",
+      "updated": null,
+      "status": "active",
+      "lines": 227
     }
   ]
 }
