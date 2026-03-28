@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 33,
-  "updated": "2026-03-28T07:22:26.154Z",
+  "data_version": 34,
+  "updated": "2026-03-28T11:28:25.065Z",
   "announcement": null,
   "categories": [
     {
@@ -844,6 +844,29 @@
       "updated": null,
       "status": "active",
       "lines": 312
+    },
+    {
+      "id": "2_mna8yaj4",
+      "name": "节假日2",
+      "name_en": "节假日2",
+      "desc": "节假日倒计时优化",
+      "desc_en": "节假日倒计时优化",
+      "category": "widgets",
+      "file": "scripts/widgets/2_mna8yaj4.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "Silence",
+      "author_en": "Silence",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-28",
+      "updated": null,
+      "status": "active",
+      "lines": 113
     }
   ]
 }
