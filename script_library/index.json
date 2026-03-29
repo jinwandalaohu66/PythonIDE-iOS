@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 38,
-  "updated": "2026-03-28T16:01:25.719Z",
+  "data_version": 39,
+  "updated": "2026-03-29T03:14:34.612Z",
   "announcement": null,
   "categories": [
     {
@@ -936,6 +936,29 @@
       "updated": null,
       "status": "active",
       "lines": 227
+    },
+    {
+      "id": "script_mnb6r277",
+      "name": "无",
+      "name_en": "无",
+      "desc": "不",
+      "desc_en": "不",
+      "category": "basic",
+      "file": "scripts/basic/script_mnb6r277.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "afish",
+      "author_en": "afish",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-29",
+      "updated": null,
+      "status": "active",
+      "lines": 33
     }
   ]
 }
