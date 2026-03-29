@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 39,
-  "updated": "2026-03-29T11:08:55.169Z",
+  "data_version": 40,
+  "updated": "2026-03-29T12:48:54.226Z",
   "announcement": null,
   "categories": [
     {
@@ -959,6 +959,29 @@
       "updated": null,
       "status": "active",
       "lines": 55
+    },
+    {
+      "id": "script_mnbr9mqw",
+      "name": "音频测试器",
+      "name_en": "音频测试器",
+      "desc": "用Ui模块直接测试作者内置的一百多个音频",
+      "desc_en": "用Ui模块直接测试作者内置的一百多个音频",
+      "category": "ui",
+      "file": "scripts/ui/script_mnbr9mqw.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "爬虫专家",
+      "author_en": "爬虫专家",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-29",
+      "updated": null,
+      "status": "active",
+      "lines": 265
     }
   ]
 }
