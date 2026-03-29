@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 39,
-  "updated": "2026-03-29T11:08:55.169Z",
+  "data_version": 40,
+  "updated": "2026-03-29T12:06:20Z",
   "announcement": null,
   "categories": [
     {
@@ -959,6 +959,30 @@
       "updated": null,
       "status": "active",
       "lines": 55
+    },
+    {
+      "id": "community_骚扰短信__by_by俄总统",
+      "name": "骚扰短信 — by by俄总统",
+      "name_en": "骚扰短信 — by by俄总统",
+      "desc": "[投稿] 骚扰短信 — by by俄总统",
+      "desc_en": "[投稿] 骚扰短信 — by by俄总统",
+      "category": "basic",
+      "file": "scripts/basic/script_mna66bcl.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "社区投稿",
+      "author_en": "社区投稿",
+      "tags": [
+        "community",
+        "basic"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-29",
+      "updated": null,
+      "status": "active",
+      "lines": 104
     }
   ]
 }
