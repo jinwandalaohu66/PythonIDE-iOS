@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 38,
-  "updated": "2026-03-28T16:01:25.719Z",
+  "data_version": 39,
+  "updated": "2026-03-29T11:08:55.169Z",
   "announcement": null,
   "categories": [
     {
@@ -936,6 +936,29 @@
       "updated": null,
       "status": "active",
       "lines": 227
+    },
+    {
+      "id": "script_mnbnp2ee",
+      "name": "简易数学计算器",
+      "name_en": "简易数学计算器",
+      "desc": "小学生做的代码,不喜勿喷,若有bug,及时在电子邮箱里反馈",
+      "desc_en": "小学生做的代码,不喜勿喷,若有bug,及时在电子邮箱里反馈",
+      "category": "basic",
+      "file": "scripts/basic/script_mnbnp2ee.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "程序员小y",
+      "author_en": "程序员小y",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-29",
+      "updated": null,
+      "status": "active",
+      "lines": 55
     }
   ]
 }
