@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 43,
-  "updated": "2026-03-30T16:52:50Z",
+  "data_version": 44,
+  "updated": "2026-03-31T01:58:02.165Z",
   "announcement": null,
   "categories": [
     {
@@ -1052,6 +1052,29 @@
       "updated": null,
       "status": "active",
       "lines": 150
+    },
+    {
+      "id": "ai_mndywb18",
+      "name": "Ai五子棋",
+      "name_en": "Ai五子棋",
+      "desc": "你行你来！",
+      "desc_en": "你行你来！",
+      "category": "games",
+      "file": "scripts/games/ai_mndywb18.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "三只菜鸡",
+      "author_en": "三只菜鸡",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-31",
+      "updated": null,
+      "status": "active",
+      "lines": 650
     }
   ]
 }
