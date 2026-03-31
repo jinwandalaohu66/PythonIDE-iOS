@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 44,
-  "updated": "2026-03-31T01:58:02.165Z",
+  "data_version": 45,
+  "updated": "2026-03-31T15:17:18.975Z",
   "announcement": null,
   "categories": [
     {
@@ -1075,6 +1075,29 @@
       "updated": null,
       "status": "active",
       "lines": 650
+    },
+    {
+      "id": "block_blast_mnerg6j8",
+      "name": "block_blast",
+      "name_en": "block_blast",
+      "desc": "block blast",
+      "desc_en": "block blast",
+      "category": "games",
+      "file": "scripts/games/block_blast_mnerg6j8.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "VibeC",
+      "author_en": "VibeC",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-03-31",
+      "updated": null,
+      "status": "active",
+      "lines": 1122
     }
   ]
 }
