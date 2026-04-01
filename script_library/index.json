@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 48,
-  "updated": "2026-04-01T10:47:27.654Z",
+  "data_version": 49,
+  "updated": "2026-04-01T14:31:19.078Z",
   "announcement": null,
   "categories": [
     {
@@ -1168,6 +1168,29 @@
       "updated": null,
       "status": "active",
       "lines": 189
+    },
+    {
+      "id": "whois_mng58tlr",
+      "name": "whois",
+      "name_en": "whois",
+      "desc": "whois域名查询",
+      "desc_en": "whois域名查询",
+      "category": "basic",
+      "file": "scripts/basic/whois_mng58tlr.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "PMJFFF",
+      "author_en": "PMJFFF",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-01",
+      "updated": null,
+      "status": "active",
+      "lines": 345
     }
   ]
 }
