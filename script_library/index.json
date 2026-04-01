@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 54,
-  "updated": "2026-04-01T17:44:05.067Z",
+  "data_version": 55,
+  "updated": "2026-04-01T17:57:54.047Z",
   "announcement": null,
   "categories": [
     {
@@ -1237,6 +1237,29 @@
       "updated": null,
       "status": "removed",
       "lines": 18
+    },
+    {
+      "id": "script_mngcmh7k",
+      "name": "相册照片统计",
+      "name_en": "相册照片统计",
+      "desc": "可以统计你相册的所有照片，并分类显示",
+      "desc_en": "可以统计你相册的所有照片，并分类显示",
+      "category": "basic",
+      "file": "scripts/basic/script_mngcmh7k.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "今晚打老虎",
+      "author_en": "今晚打老虎",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-01",
+      "updated": null,
+      "status": "active",
+      "lines": 138
     }
   ]
 }
