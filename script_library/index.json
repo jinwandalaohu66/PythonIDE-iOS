@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 46,
-  "updated": "2026-04-01T07:40:10.066Z",
+  "data_version": 47,
+  "updated": "2026-04-01T10:04:19Z",
   "announcement": null,
   "categories": [
     {
@@ -1121,6 +1121,30 @@
       "updated": null,
       "status": "active",
       "lines": 15
+    },
+    {
+      "id": "community_太好用了__by_鲁小师",
+      "name": "太好用了 — by 鲁小师",
+      "name_en": "太好用了 — by 鲁小师",
+      "desc": "[投稿] 太好用了 — by 鲁小师",
+      "desc_en": "[投稿] 太好用了 — by 鲁小师",
+      "category": "basic",
+      "file": "scripts/basic/script_mnfrb0ax.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "社区投稿",
+      "author_en": "社区投稿",
+      "tags": [
+        "community",
+        "basic"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-01",
+      "updated": null,
+      "status": "active",
+      "lines": 23
     }
   ]
 }
