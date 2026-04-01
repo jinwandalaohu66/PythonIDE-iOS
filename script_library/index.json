@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 50,
-  "updated": "2026-04-01T16:23:30.391Z",
+  "data_version": 51,
+  "updated": "2026-04-01T17:24:19.806Z",
   "announcement": null,
   "categories": [
     {
@@ -1214,6 +1214,29 @@
       "updated": null,
       "status": "active",
       "lines": 499
+    },
+    {
+      "id": "script_mngbfc3s",
+      "name": "照片统计",
+      "name_en": "照片统计",
+      "desc": "运行可以直接统计你相册有多少照片",
+      "desc_en": "运行可以直接统计你相册有多少照片",
+      "category": "basic",
+      "file": "scripts/basic/script_mngbfc3s.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "今晚打老虎",
+      "author_en": "今晚打老虎",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-01",
+      "updated": null,
+      "status": "active",
+      "lines": 18
     }
   ]
 }
