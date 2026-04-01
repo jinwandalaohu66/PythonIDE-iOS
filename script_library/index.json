@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 49,
-  "updated": "2026-04-01T14:31:19.078Z",
+  "data_version": 50,
+  "updated": "2026-04-01T16:23:30.391Z",
   "announcement": null,
   "categories": [
     {
@@ -1191,6 +1191,29 @@
       "updated": null,
       "status": "active",
       "lines": 345
+    },
+    {
+      "id": "script_mng993pf",
+      "name": "骚扰电话检测防护工具",
+      "name_en": "骚扰电话检测防护工具",
+      "desc": "运行时ui界面错位的话请重新运行",
+      "desc_en": "运行时ui界面错位的话请重新运行",
+      "category": "basic",
+      "file": "scripts/basic/script_mng993pf.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "昨天",
+      "author_en": "昨天",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-01",
+      "updated": null,
+      "status": "active",
+      "lines": 499
     }
   ]
 }
