@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 45,
-  "updated": "2026-03-31T15:17:18.975Z",
+  "data_version": 46,
+  "updated": "2026-04-01T07:40:10.066Z",
   "announcement": null,
   "categories": [
     {
@@ -1098,6 +1098,29 @@
       "updated": null,
       "status": "active",
       "lines": 1122
+    },
+    {
+      "id": "script_mnfqk5cz",
+      "name": "二维码生成器",
+      "name_en": "二维码生成器",
+      "desc": "生成二维码（需拓展qrcode库）",
+      "desc_en": "生成二维码（需拓展qrcode库）",
+      "category": "basic",
+      "file": "scripts/basic/script_mnfqk5cz.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "爱玩Arduino",
+      "author_en": "爱玩Arduino",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-01",
+      "updated": null,
+      "status": "active",
+      "lines": 15
     }
   ]
 }
