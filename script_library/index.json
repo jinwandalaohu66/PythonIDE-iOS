@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 60,
-  "updated": "2026-04-02T04:49:07.454Z",
+  "data_version": 61,
+  "updated": "2026-04-02T12:44:35.516Z",
   "announcement": null,
   "categories": [
     {
@@ -1190,6 +1190,29 @@
       "updated": null,
       "status": "active",
       "lines": 713
+    },
+    {
+      "id": "script_mnhgvh9i",
+      "name": "象棋",
+      "name_en": "象棋",
+      "desc": "可以单机可以双人，感兴趣的可以挑战一下",
+      "desc_en": "可以单机可以双人，感兴趣的可以挑战一下",
+      "category": "games",
+      "file": "scripts/games/script_mnhgvh9i.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "今晚打老虎",
+      "author_en": "今晚打老虎",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-02",
+      "updated": null,
+      "status": "active",
+      "lines": 1459
     }
   ]
 }
