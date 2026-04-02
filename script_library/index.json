@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 58,
-  "updated": "2026-04-01T19:13:28.206Z",
+  "data_version": 59,
+  "updated": "2026-04-02T00:07:17.536Z",
   "announcement": null,
   "categories": [
     {
@@ -1190,6 +1190,29 @@
       "updated": null,
       "status": "active",
       "lines": 138
+    },
+    {
+      "id": "2_0_mngptldc",
+      "name": "骚扰电话检测防护工具2.0",
+      "name_en": "骚扰电话检测防护工具2.0",
+      "desc": "重构ui界面修复首次运行时ui显示错位问题，优化增强识别骚扰电话能力",
+      "desc_en": "重构ui界面修复首次运行时ui显示错位问题，优化增强识别骚扰电话能力",
+      "category": "ui",
+      "file": "scripts/ui/2_0_mngptldc.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "昨天",
+      "author_en": "昨天",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-02",
+      "updated": null,
+      "status": "active",
+      "lines": 713
     }
   ]
 }
