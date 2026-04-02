@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 62,
-  "updated": "2026-04-02T12:49:30.426Z",
+  "data_version": 63,
+  "updated": "2026-04-02T13:14:35Z",
   "announcement": null,
   "categories": [
     {
@@ -1236,6 +1236,30 @@
       "updated": null,
       "status": "active",
       "lines": 267
+    },
+    {
+      "id": "community_网吧模拟器11__by_daoyu268",
+      "name": "网吧模拟器（1.1） — by Daoyu268",
+      "name_en": "网吧模拟器（1.1） — by Daoyu268",
+      "desc": "[投稿] 网吧模拟器（1.1） — by Daoyu268",
+      "desc_en": "[投稿] 网吧模拟器（1.1） — by Daoyu268",
+      "category": "basic",
+      "file": "scripts/games/1_1_mnhh5ul7.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "社区投稿",
+      "author_en": "社区投稿",
+      "tags": [
+        "community",
+        "basic"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-02",
+      "updated": null,
+      "status": "active",
+      "lines": 253
     }
   ]
 }
