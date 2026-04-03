@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 67,
-  "updated": "2026-04-03T16:39:56Z",
+  "data_version": 68,
+  "updated": "2026-04-03T19:25:26.722Z",
   "announcement": null,
   "categories": [
     {
@@ -1329,6 +1329,29 @@
       "updated": null,
       "status": "active",
       "lines": 74
+    },
+    {
+      "id": "4_2_mnjamuxf",
+      "name": "广西_4_2",
+      "name_en": "广西_4_2",
+      "desc": "头",
+      "desc_en": "头",
+      "category": "basic",
+      "file": "scripts/basic/4_2_mnjamuxf.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "uu",
+      "author_en": "uu",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-03",
+      "updated": null,
+      "status": "active",
+      "lines": 3
     }
   ]
 }
