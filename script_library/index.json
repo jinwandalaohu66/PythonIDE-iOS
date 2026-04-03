@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 64,
-  "updated": "2026-04-03T09:05:24.054Z",
+  "data_version": 65,
+  "updated": "2026-04-03T10:40:27.436Z",
   "announcement": null,
   "categories": [
     {
@@ -1259,6 +1259,29 @@
       "updated": null,
       "status": "removed",
       "lines": 650
+    },
+    {
+      "id": "cmd1_0_mnirvpz0",
+      "name": "模拟cmd1.0",
+      "name_en": "模拟cmd1.0",
+      "desc": "一个模拟cmd的小脚本，为了方便改了一点语法，暂时只有这些功能english:A small script that simulates cmd. In order to facilitate a little syntax, it only has these functions for the time being.",
+      "desc_en": "一个模拟cmd的小脚本，为了方便改了一点语法，暂时只有这些功能english:A small script that simulates cmd. In order to facilitate a little syntax, it only has these functions for the time being.",
+      "category": "basic",
+      "file": "scripts/basic/cmd1_0_mnirvpz0.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "ioo",
+      "author_en": "ioo",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-03",
+      "updated": null,
+      "status": "active",
+      "lines": 93
     }
   ]
 }
