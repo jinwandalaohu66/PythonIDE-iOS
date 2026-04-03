@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 65,
-  "updated": "2026-04-03T10:40:27.436Z",
+  "data_version": 66,
+  "updated": "2026-04-03T15:12:30.481Z",
   "announcement": null,
   "categories": [
     {
@@ -1273,6 +1273,29 @@
       "file_type": "py",
       "author": "ioo",
       "author_en": "ioo",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-03",
+      "updated": null,
+      "status": "active",
+      "lines": 93
+    },
+    {
+      "id": "script_mnj1lj72",
+      "name": "每日名言",
+      "name_en": "每日名言",
+      "desc": "每日名言，仅仅支持中组件",
+      "desc_en": "每日名言，仅仅支持中组件",
+      "category": "widgets",
+      "file": "scripts/widgets/script_mnj1lj72.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "Silence",
+      "author_en": "Silence",
       "tags": [
         "community"
       ],
