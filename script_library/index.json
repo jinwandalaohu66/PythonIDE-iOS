@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 68,
-  "updated": "2026-04-04T09:29:04.399Z",
+  "data_version": 69,
+  "updated": "2026-04-04T14:02:13.299Z",
   "announcement": null,
   "categories": [
     {
@@ -1352,6 +1352,29 @@
       "updated": null,
       "status": "active",
       "lines": 351
+    },
+    {
+      "id": "script_mnkej15x",
+      "name": "和平内核模拟刷入",
+      "name_en": "和平内核模拟刷入",
+      "desc": "这个只是整蛊人的，大家可以去整蛊一下朋友",
+      "desc_en": "这个只是整蛊人的，大家可以去整蛊一下朋友",
+      "category": "basic",
+      "file": "scripts/basic/script_mnkej15x.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "小王",
+      "author_en": "小王",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-04",
+      "updated": null,
+      "status": "active",
+      "lines": 78
     }
   ]
 }
