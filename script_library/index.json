@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 67,
-  "updated": "2026-04-03T16:39:56Z",
+  "data_version": 68,
+  "updated": "2026-04-04T09:29:04.399Z",
   "announcement": null,
   "categories": [
     {
@@ -1329,6 +1329,29 @@
       "updated": null,
       "status": "active",
       "lines": 74
+    },
+    {
+      "id": "whois_mnk4rrph",
+      "name": "whois查询",
+      "name_en": "whois查询",
+      "desc": "优化操作流程",
+      "desc_en": "优化操作流程",
+      "category": "basic",
+      "file": "scripts/basic/whois_mnk4rrph.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "Jason Peng",
+      "author_en": "Jason Peng",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-04",
+      "updated": null,
+      "status": "active",
+      "lines": 351
     }
   ]
 }
