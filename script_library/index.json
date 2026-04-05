@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 73,
-  "updated": "2026-04-05T04:04:32.258Z",
+  "data_version": 74,
+  "updated": "2026-04-05T04:04:42.099Z",
   "announcement": null,
   "categories": [
     {
@@ -1213,29 +1213,6 @@
       "updated": null,
       "status": "active",
       "lines": 1459
-    },
-    {
-      "id": "3_0_mnhh1thq",
-      "name": "网吧模拟器（3.0）",
-      "name_en": "网吧模拟器（3.0）",
-      "desc": "版本",
-      "desc_en": "版本",
-      "category": "games",
-      "file": "scripts/games/3_0_mnhh1thq.py",
-      "thumbnail": null,
-      "version": 1,
-      "file_type": "py",
-      "author": "Daoyu268",
-      "author_en": "Daoyu268",
-      "tags": [
-        "community"
-      ],
-      "requires": [],
-      "min_app_version": "1.5.0",
-      "added": "2026-04-02",
-      "updated": null,
-      "status": "removed",
-      "lines": 267
     },
     {
       "id": "ai_mniht95n",
