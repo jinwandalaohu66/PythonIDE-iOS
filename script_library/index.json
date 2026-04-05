@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 81,
-  "updated": "2026-04-05T09:58:07Z",
+  "data_version": 82,
+  "updated": "2026-04-05T16:20:03.492Z",
   "announcement": null,
   "categories": [
     {
@@ -1328,6 +1328,29 @@
       "updated": null,
       "status": "active",
       "lines": 99
+    },
+    {
+      "id": "subinfo_web_mnlyw592",
+      "name": "subinfo_web",
+      "name_en": "subinfo_web",
+      "desc": "订阅链接查询",
+      "desc_en": "订阅链接查询",
+      "category": "ui",
+      "file": "scripts/ui/subinfo_web_mnlyw592.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "啥也不是",
+      "author_en": "啥也不是",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-05",
+      "updated": null,
+      "status": "active",
+      "lines": 568
     }
   ]
 }
