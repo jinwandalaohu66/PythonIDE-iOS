@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 79,
-  "updated": "2026-04-05T04:05:13.290Z",
+  "data_version": 80,
+  "updated": "2026-04-05T06:46:23.849Z",
   "announcement": null,
   "categories": [
     {
@@ -1281,6 +1281,29 @@
       "updated": null,
       "status": "active",
       "lines": 187
+    },
+    {
+      "id": "cmd1_0_mnleeeta",
+      "name": "模拟cmd1.0系统可还原",
+      "name_en": "模拟cmd1.0系统可还原",
+      "desc": "如果不小心删了文件，可以用save和load保存系统或加载系统，文件名dosfile.txt，是json格式",
+      "desc_en": "如果不小心删了文件，可以用save和load保存系统或加载系统，文件名dosfile.txt，是json格式",
+      "category": "basic",
+      "file": "scripts/basic/cmd1_0_mnleeeta.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "ioo",
+      "author_en": "ioo",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-05",
+      "updated": null,
+      "status": "active",
+      "lines": 97
     }
   ]
 }
