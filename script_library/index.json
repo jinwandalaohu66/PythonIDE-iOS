@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 71,
-  "updated": "2026-04-04T19:58:20.294Z",
+  "data_version": 72,
+  "updated": "2026-04-05T00:28:45.894Z",
   "announcement": null,
   "categories": [
     {
@@ -1398,6 +1398,29 @@
       "updated": null,
       "status": "active",
       "lines": 577
+    },
+    {
+      "id": "script_mnl0ws3b",
+      "name": "一款计算器",
+      "name_en": "一款计算器",
+      "desc": "小学生爆肝5天，不喜勿喷，bug请联系",
+      "desc_en": "小学生爆肝5天，不喜勿喷，bug请联系",
+      "category": "basic",
+      "file": "scripts/basic/script_mnl0ws3b.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "ENDER",
+      "author_en": "ENDER",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-05",
+      "updated": null,
+      "status": "active",
+      "lines": 187
     }
   ]
 }
