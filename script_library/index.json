@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 82,
-  "updated": "2026-04-05T16:20:03.492Z",
+  "data_version": 83,
+  "updated": "2026-04-06T22:07:39.462Z",
   "announcement": null,
   "categories": [
     {
@@ -1351,6 +1351,29 @@
       "updated": null,
       "status": "active",
       "lines": 568
+    },
+    {
+      "id": "script_mnnqr05c",
+      "name": "通讯录统计",
+      "name_en": "通讯录统计",
+      "desc": "可以统计手机通讯录内容",
+      "desc_en": "可以统计手机通讯录内容",
+      "category": "basic",
+      "file": "scripts/basic/script_mnnqr05c.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "今晚打老虎",
+      "author_en": "今晚打老虎",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-06",
+      "updated": null,
+      "status": "active",
+      "lines": 427
     }
   ]
 }
