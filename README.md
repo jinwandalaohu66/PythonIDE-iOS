@@ -23,7 +23,7 @@
   <img src="https://img.shields.io/badge/Python-3.13-3776AB?style=flat-square&logo=python" alt="Python 3.13" />
   <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript" alt="JavaScript" />
   <img src="https://img.shields.io/badge/Swift-5.9-FA7343?style=flat-square&logo=swift" alt="Swift" />
-  <img src="https://img.shields.io/badge/C_Extensions-12+-brightgreen?style=flat-square" alt="C Extensions" />
+  <img src="https://img.shields.io/badge/C_Extensions-25+-brightgreen?style=flat-square" alt="C Extensions" />
   <img src="https://img.shields.io/badge/SSH-服务器管理-orange?style=flat-square&logo=gnometerminal" alt="SSH" />
 </p>
 
@@ -35,7 +35,7 @@
 
 - **完全本地运行** — 代码执行不依赖任何服务器，无网络也能用
 - **Python 3.13 完整标准库** — 不是阉割版，`asyncio`、`threading`、`socket` 全都有
-- **12 个预装 C 扩展库** — NumPy、Pillow、cryptography 等，直接 `import`，速度是纯 Python 的 10–100 倍
+- **25+ 个预装第三方 C 加速包** — NumPy、pandas、Matplotlib、Pillow、aiohttp 生态等，直接 `import`，速度是纯 Python 的 10–100 倍
 - **150+ 预装纯 Python Wheel** — 常用库开箱即用，还能搜索 PyPI 在线安装更多
 - **AI 助手开箱即用** — 无需配置，免费额度直接用；支持接入自己的 Key 无限使用
 - **SSH 服务器管理** — 写完脚本直接部署到服务器，SFTP 文件管理、实时监控、AI 智能运维
@@ -166,22 +166,33 @@ Plan 模式是纯对话模式，适合复杂需求的前期规划：
 
 ### ⚡ 内置 C 扩展库
 
-> 由原生代码编译，运行速度比纯 Python 实现快 **10–100 倍**，直接 `import` 即用，无需安装。
+> 由原生代码编译，运行速度比纯 Python 实现快 **10–100 倍**，直接 `import` 即用，无需安装。下表按**用户可导入的 Python 包**归纳；Python 自带解释器 C 模块（如 `_ssl`、`_ctypes`、`_json` 等）未单独列出。
 
 | 分类 | 库 | 说明 |
 |------|-----|------|
-| 科学计算 | **NumPy 1.26** | 数组、矩阵、线性代数、FFT、随机数 |
+| 科学计算 | **NumPy 2.2** | 数组、矩阵、线性代数、FFT、随机数、广播与 ufunc |
+| 数据分析 | **pandas 2.2** | DataFrame、分组聚合、时间序列、IO（大量 C/Cython 内核） |
+| 可视化 | **Matplotlib 3.9** | 2D 绘图、Agg 后端、字体与路径渲染 |
+| 等高线 | **contourpy** | Matplotlib 等高线计算加速 |
 | 图像处理 | **Pillow 12** | JPEG/PNG/WebP/AVIF 读写，滤镜、裁剪、合成 |
 | 高性能 JSON | **ujson** | 比标准 `json` 快 10 倍，接口完全兼容 |
+| 高性能 JSON | **python-rapidjson** | RapidJSON 绑定（`import rapidjson`），解析与序列化加速 |
 | 高性能序列化 | **msgpack** | 二进制序列化，体积更小、速度更快 |
 | 高级正则 | **regex** | Unicode 分类、模糊匹配、重叠匹配，比 `re` 更强大 |
 | 工业级加密 | **cryptography** | AES、RSA、ECDSA、Fernet 完整套件 |
 | 密码哈希 | **bcrypt** | 密码安全存储的行业标准 |
 | 密码哈希 | **argon2-cffi** | 比 bcrypt 更安全的新一代标准 |
 | C 接口层 | **cffi** | Python 与 C 代码互调的基础桥接库 |
-| 异步网络 | **aiohttp** | C 加速的高性能异步 HTTP 客户端 |
+| 异步网络 | **aiohttp** | C 加速的高性能异步 HTTP 客户端（llhttp 解析等） |
+| HTTP 栈依赖 | **yarl / multidict / frozenlist** | URL 构建、多维字典、不可变链表（异步 HTTP 常用） |
+| 压缩 | **brotli** | Brotli 压缩/解压（网络与存储场景） |
 | 数据结构 | **bitarray / lru-dict** | 高效位数组、C 实现的 LRU 缓存 |
-| 开发工具 | **coverage / kiwisolver** | 代码覆盖率统计、约束求解器 |
+| 哈希 | **mmh3** | MurmurHash3，高速非加密哈希 |
+| 哈希 | **xxhash** | 极快的非加密哈希 |
+| YAML | **ruamel.yaml**（含 **ruamel.yaml.clib**） | YAML 读写，C 层加速解析 |
+| 协程 | **greenlet** | 轻量级协程栈切换（部分库依赖） |
+| 进程信息 | **setproctitle** | 设置进程标题，便于调试与监控工具识别 |
+| 开发工具 | **coverage / kiwisolver** | 代码覆盖率统计、约束求解器（Matplotlib 等依赖） |
 
 ---
 
