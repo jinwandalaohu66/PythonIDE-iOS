@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 86,
-  "updated": "2026-04-08T22:09:17.767Z",
+  "data_version": 87,
+  "updated": "2026-04-10T13:14:17.105Z",
   "announcement": null,
   "categories": [
     {
@@ -1444,6 +1444,29 @@
       "updated": null,
       "status": "active",
       "lines": 18
+    },
+    {
+      "id": "get_mnsxghs0",
+      "name": "网页状态政策程序（GET请求）",
+      "name_en": "网页状态政策程序（GET请求）",
+      "desc": "一个侦测网页状态的Python程序(GET请求),小学生通宵做的,不喜勿喷。如有改进，可在电子邮件内提出意见",
+      "desc_en": "一个侦测网页状态的Python程序(GET请求),小学生通宵做的,不喜勿喷。如有改进，可在电子邮件内提出意见",
+      "category": "basic",
+      "file": "scripts/basic/get_mnsxghs0.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "程序员小y",
+      "author_en": "程序员小y",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-10",
+      "updated": null,
+      "status": "active",
+      "lines": 41
     }
   ]
 }
