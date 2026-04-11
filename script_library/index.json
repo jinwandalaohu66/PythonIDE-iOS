@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 87,
-  "updated": "2026-04-10T13:14:17.105Z",
+  "data_version": 88,
+  "updated": "2026-04-11T13:22:42.800Z",
   "announcement": null,
   "categories": [
     {
@@ -1467,6 +1467,29 @@
       "updated": null,
       "status": "active",
       "lines": 41
+    },
+    {
+      "id": "script_mnud774c",
+      "name": "太好用了",
+      "name_en": "太好用了",
+      "desc": "真的太强大了",
+      "desc_en": "真的太强大了",
+      "category": "basic",
+      "file": "scripts/basic/script_mnud774c.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "我是人",
+      "author_en": "我是人",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-11",
+      "updated": null,
+      "status": "active",
+      "lines": 1
     }
   ]
 }
