@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 88,
-  "updated": "2026-04-11T21:12:50.787Z",
+  "data_version": 89,
+  "updated": "2026-04-12T05:10:38Z",
   "announcement": null,
   "categories": [
     {
@@ -1490,6 +1490,30 @@
       "updated": null,
       "status": "active",
       "lines": 236
+    },
+    {
+      "id": "community_身份证核验__by_霞飞路",
+      "name": "身份证核验 — by 霞飞路",
+      "name_en": "身份证核验 — by 霞飞路",
+      "desc": "[投稿] 身份证核验 — by 霞飞路",
+      "desc_en": "[投稿] 身份证核验 — by 霞飞路",
+      "category": "basic",
+      "file": "scripts/basic/script_mnul4nuo.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "社区投稿",
+      "author_en": "社区投稿",
+      "tags": [
+        "community",
+        "basic"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-12",
+      "updated": null,
+      "status": "active",
+      "lines": 17
     }
   ]
 }
