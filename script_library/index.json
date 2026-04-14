@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 89,
-  "updated": "2026-04-12T05:10:38Z",
+  "data_version": 90,
+  "updated": "2026-04-14T08:40:10.186Z",
   "announcement": null,
   "categories": [
     {
@@ -1514,6 +1514,29 @@
       "updated": null,
       "status": "active",
       "lines": 17
+    },
+    {
+      "id": "ddos_mnydfe4y",
+      "name": "DDOS攻击",
+      "name_en": "DDOS攻击",
+      "desc": "电脑运行，手机的加载容易卡机，请在靶机或授权环境情况下使用！",
+      "desc_en": "电脑运行，手机的加载容易卡机，请在靶机或授权环境情况下使用！",
+      "category": "basic",
+      "file": "scripts/basic/ddos_mnydfe4y.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "七月",
+      "author_en": "七月",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-14",
+      "updated": null,
+      "status": "active",
+      "lines": 100
     }
   ]
 }
