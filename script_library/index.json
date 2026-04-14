@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 91,
-  "updated": "2026-04-14T11:44:03Z",
+  "data_version": 92,
+  "updated": "2026-04-14T14:43:21.842Z",
   "announcement": null,
   "categories": [
     {
@@ -1561,6 +1561,29 @@
       "updated": null,
       "status": "active",
       "lines": 146
+    },
+    {
+      "id": "salary_widget_mnyqeg8t",
+      "name": "salary_widget",
+      "name_en": "salary_widget",
+      "desc": "看看每天可以摸多少薪水",
+      "desc_en": "看看每天可以摸多少薪水",
+      "category": "widgets",
+      "file": "scripts/widgets/salary_widget_mnyqeg8t.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "AirouLin",
+      "author_en": "AirouLin",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-14",
+      "updated": null,
+      "status": "active",
+      "lines": 192
     }
   ]
 }
