@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 93,
-  "updated": "2026-04-17T16:06:31.912Z",
+  "data_version": 94,
+  "updated": "2026-04-17T17:06:15Z",
   "announcement": null,
   "categories": [
     {
@@ -1607,6 +1607,30 @@
       "updated": null,
       "status": "active",
       "lines": 49
+    },
+    {
+      "id": "community_模拟cmd26__by_ioo",
+      "name": "模拟cmd2.6 — by ioo",
+      "name_en": "模拟cmd2.6 — by ioo",
+      "desc": "[投稿] 模拟cmd2.6 — by ioo",
+      "desc_en": "[投稿] 模拟cmd2.6 — by ioo",
+      "category": "basic",
+      "file": "scripts/basic/cmd2_6_mo2zh2uh.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "社区投稿",
+      "author_en": "社区投稿",
+      "tags": [
+        "community",
+        "basic"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-17",
+      "updated": null,
+      "status": "active",
+      "lines": 144
     }
   ]
 }
