@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 95,
-  "updated": "2026-04-17T18:24:51.985Z",
+  "data_version": 96,
+  "updated": "2026-04-18T16:51:27.870Z",
   "announcement": null,
   "categories": [
     {
@@ -1654,6 +1654,29 @@
       "updated": null,
       "status": "active",
       "lines": 26
+    },
+    {
+      "id": "script_mo4kqly8",
+      "name": "三要素核验",
+      "name_en": "三要素核验",
+      "desc": "1",
+      "desc_en": "1",
+      "category": "basic",
+      "file": "scripts/basic/script_mo4kqly8.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "人皇",
+      "author_en": "人皇",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-18",
+      "updated": null,
+      "status": "active",
+      "lines": 142
     }
   ]
 }
