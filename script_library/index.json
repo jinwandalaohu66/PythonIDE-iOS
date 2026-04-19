@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 95,
-  "updated": "2026-04-17T18:24:51.985Z",
+  "data_version": 96,
+  "updated": "2026-04-19T17:14:56.130Z",
   "announcement": null,
   "categories": [
     {
@@ -1584,29 +1584,6 @@
       "updated": null,
       "status": "active",
       "lines": 192
-    },
-    {
-      "id": "script_mo33oyu5",
-      "name": "韩雅诺与陈海鸥的爱情故事",
-      "name_en": "韩雅诺与陈海鸥的爱情故事",
-      "desc": "陈海鸥nb",
-      "desc_en": "陈海鸥nb",
-      "category": "basic",
-      "file": "scripts/basic/script_mo33oyu5.py",
-      "thumbnail": null,
-      "version": 1,
-      "file_type": "py",
-      "author": "韩雅诺",
-      "author_en": "韩雅诺",
-      "tags": [
-        "community"
-      ],
-      "requires": [],
-      "min_app_version": "1.5.0",
-      "added": "2026-04-17",
-      "updated": null,
-      "status": "active",
-      "lines": 49
     },
     {
       "id": "community_模拟cmd26__by_ioo",
