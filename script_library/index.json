@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 98,
-  "updated": "2026-04-20T12:32:31.335Z",
+  "data_version": 99,
+  "updated": "2026-04-21T12:29:23.484Z",
   "announcement": null,
   "categories": [
     {
@@ -1631,6 +1631,29 @@
       "updated": null,
       "status": "active",
       "lines": 26
+    },
+    {
+      "id": "3_0_mo8lp3m5",
+      "name": "科学计算器3.0",
+      "name_en": "科学计算器3.0",
+      "desc": "兄弟们！咱们的V3（V2是html上传不了）版本科学计算器也是来了！直接上传，肥肠好用！（直接打开第三条网址）之前不更新是在搞焊接，感谢大伙一路以来的陪伴！",
+      "desc_en": "兄弟们！咱们的V3（V2是html上传不了）版本科学计算器也是来了！直接上传，肥肠好用！（直接打开第三条网址）之前不更新是在搞焊接，感谢大伙一路以来的陪伴！",
+      "category": "ui",
+      "file": "scripts/ui/3_0_mo8lp3m5.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "ENDER",
+      "author_en": "ENDER",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-21",
+      "updated": null,
+      "status": "active",
+      "lines": 642
     }
   ]
 }
