@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 99,
-  "updated": "2026-04-21T12:29:23.484Z",
+  "data_version": 100,
+  "updated": "2026-04-22T06:42:07.854Z",
   "announcement": null,
   "categories": [
     {
@@ -1654,6 +1654,29 @@
       "updated": null,
       "status": "active",
       "lines": 642
+    },
+    {
+      "id": "script_mo9oqex4",
+      "name": "小姐姐视频",
+      "name_en": "小姐姐视频",
+      "desc": "没事瞎闹",
+      "desc_en": "没事瞎闹",
+      "category": "ui",
+      "file": "scripts/ui/script_mo9oqex4.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "枕闲鱼",
+      "author_en": "枕闲鱼",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-22",
+      "updated": null,
+      "status": "active",
+      "lines": 77
     }
   ]
 }
