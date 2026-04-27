@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 103,
-  "updated": "2026-04-26T11:26:57.428Z",
+  "data_version": 104,
+  "updated": "2026-04-27T05:15:17.858Z",
   "announcement": null,
   "categories": [
     {
@@ -1723,6 +1723,29 @@
       "updated": null,
       "status": "active",
       "lines": 359
+    },
+    {
+      "id": "mindos_novus_2_3_mogqtz27",
+      "name": "MINDOS（NOVUS 2.3）",
+      "name_en": "MINDOS（NOVUS 2.3）",
+      "desc": "一个自制操作系统",
+      "desc_en": "一个自制操作系统",
+      "category": "other",
+      "file": "scripts/other/mindos_novus_2_3_mogqtz27.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "Daoyu268",
+      "author_en": "Daoyu268",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-27",
+      "updated": null,
+      "status": "active",
+      "lines": 420
     }
   ]
 }
