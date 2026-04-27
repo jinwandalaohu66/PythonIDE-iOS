@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>Aetherwave 2077</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        :root {
+            --bg-metal: #1a1a1b;
+            --bg-dark: #0f0f10;
+            --accent-orange: #ff702e;
+            --accent-green: #00ff41;
+            --glass-shine: rgba(255, 255, 255, 0.05);
+            --shadow-inset: inset 2px 2px 5px rgba(0,0,0,0.7), inset -1px -1px 2px rgba(255,255,255,0.1);
+            --shadow-out: 5px 5px 10px rgba(0,0,0,0.6), -2px -2px 5px rgba(255,255,255,0.05);
+        }
+
+        body {
+            background-color: var(--bg-metal);
+            font-family: 'Courier New', monospace;
+            color: #ccc;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        /* --- 布局 --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: #111;
+            border-bottom: 1px solid #333;
+        }
+
+        .main-display {
+            flex: 1;
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+            height: 40%;
+        }
+
+        .channel-list {
+            flex: 1;
+            background: var(--bg-dark);
+            border-radius: 8px;
+            box-shadow: var(--shadow-inset);
+            overflow-y: auto;
+            padding: 10px;
+            font-size: 12px;
+        }
+
+        .channel-item {
+            padding: 8px;
+            border-bottom: 1px dashed #333;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .channel-item.active {
+            color: var(--accent-orange);
+            text-shadow: 0 0 5px var(--accent-orange);
+            background: rgba(255, 112, 46, 0.1);
+        }
+
+        .oscilloscope {
+            flex: 1;
+            background: #000;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #333;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+        }
+
+        /* CRT 效果 */
+        .crt-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            filter: blur(0.5px);
+        }
+
+        /* --- 控制台 --- */
+        .control-deck {
+            height: 45%;
+            background: #222;
+            border-top: 1px solid #444;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+        }
+
+        /* 预设收藏按钮 */
+        .presets {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .preset-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            border: none;
+            box-shadow: var(--shadow-out);
+            color: #666;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        .preset-btn:active, .preset-btn.saved {
+            box-shadow: var(--shadow-inset);
+            color: var(--accent-orange);
+        }
+        .preset-btn.active-playing {
+            background: var(--accent-orange);
+            color: #000;
+            box-shadow: 0 0 10px var(--accent-orange);
+        }
+
+        /* 调频滑块 */
+        .tuner-container {
+            position: relative;
+            padding: 0 20px;
+        }
+        .freq-display {
+            text-align: center;
+            font-size: 24px;
+            color: var(--accent-orange);
+            font-family: monospace;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px var(--accent-orange);
+        }
+        
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 12px;
+            cursor: pointer;
+            background: #111;
+            border-radius: 5px;
+            box-shadow: inset 1px 1px 5px #000;
+            border: 1px solid #333;
+        }
+        
+        input[type=range]::-webkit-slider-thumb {
+            height: 30px;
+            width: 15px;
+            border-radius: 2px;
+            background: linear-gradient(to right, #444, #777, #444);
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -10px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            border: 1px solid #000;
+        }
+
+        /* 底部旋钮区 */
+        .knob-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        
+        .knob {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            box-shadow: var(--shadow-out);
+            border: 2px solid #333;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .knob::after {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--accent-orange);
+            position: absolute;
+            top: 5px;
+            border-radius: 2px;
+            box-shadow: 0 0 5px var(--accent-orange);
+        }
+        .knob-label {
+            position: absolute;
+            bottom: -20px;
+            font-size: 10px;
+            color: #666;
+        }
+
+        /* 开关遮罩 */
+        #power-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: var(--accent-green);
+        }
+        .power-btn {
+            font-size: 40px;
+            cursor: pointer;
+            text-shadow: 0 0 10px var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        select {
+            background: #111;
+            color: var(--accent-green);
+            border: 1px solid #333;
+            padding: 5px;
+            font-family: inherit;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="power-overlay">
+        <div class="power-btn" onclick="powerOn()">⏻ POWER ON</div>
+        <p style="margin-top:20px; font-size:12px; opacity:0.6;">AETHERWAVE 2077 SYSTEM</p>
+    </div>
+
+    <div class="header">
+        <div style="color:var(--accent-green)">AETHERWAVE // <span id="clock">00:00</span></div>
+        <select id="country-select" onchange="changeCountry()">
+            <option value="CN">China</option>
+            <option value="US">USA</option>
+            <option value="JP">Japan</option>
+            <option value="GB">UK</option>
+            <option value="RU">Russia</option>
+        </select>
+    </div>
+
+    <div class="main-display">
+        <div class="channel-list" id="station-list">
+            <div style="padding:10px; text-align:center;">INITIALIZING...</div>
+        </div>
+        <div class="oscilloscope">
+            <div class="crt-overlay"></div>
+            <canvas id="visualizer"></canvas>
+        </div>
+    </div>
+
+    <div class="control-deck">
+        <div class="presets">
+            <button class="preset-btn" onclick="handlePreset(0)">1</button>
+            <button class="preset-btn" onclick="handlePreset(1)">2</button>
+            <button class="preset-btn" onclick="handlePreset(2)">3</button>
+            <button class="preset-btn" onclick="handlePreset(3)">4</button>
+            <button class="preset-btn" onclick="handlePreset(4)">5</button>
+        </div>
+
+        <div class="tuner-container">
+            <div class="freq-display"><span id="freq-text">87.5</span> MHz</div>
+            <input type="range" id="tuner" min="875" max="1080" value="875" 
+                   oninput="onTuning()" onchange="onTuneRelease()">
+        </div>
+
+        <div class="knob-section">
+            <div class="knob-wrapper" style="text-align:center;">
+                <div class="knob" id="vol-knob" style="transform: rotate(-135deg);"></div>
+                <span class="knob-label">VOLUME</span>
+            </div>
+            <div class="knob-wrapper" style="text-align:center;">
+                <div class="knob" id="fine-knob" style="transform: rotate(0deg);"></div>
+                <span class="knob-label">FINE TUNE</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 核心变量 ---
+        let audioCtx;
+        let radioAudio = new Audio();
+        let staticNode, staticGain; // 白噪音
+        let analyser;
+        let isPowerOn = false;
+        let stations = [];
+        let currentStationIndex = -1;
+        let presets = [null, null, null, null, null];
+        
+        // --- 音效引擎 (Web Audio API) ---
+        
+        function initAudio() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // 1. 设置无线电音频分析器 (Visualizer)
+            const source = audioCtx.createMediaElementSource(radioAudio);
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 2048;
+            source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+            
+            // 2. 创建白噪音发生器 (Static Noise)
+            const bufferSize = audioCtx.sampleRate * 2; // 2秒缓冲
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+            
+            staticNode = audioCtx.createBufferSource();
+            staticNode.buffer = buffer;
+            staticNode.loop = true;
+            staticGain = audioCtx.createGain();
+            staticGain.gain.value = 0; // 初始静音
+            
+            // 添加带通滤波器，让白噪音听起来更像无线电
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 1000;
+            
+            staticNode.connect(filter);
+            filter.connect(staticGain);
+            staticGain.connect(audioCtx.destination);
+            staticNode.start();
+        }
+
+        // 生成机械点击声
+        function playClickSound() {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            
+            osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.05);
+            
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+            
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.05);
+        }
+
+        // --- 交互逻辑 ---
+
+        function powerOn() {
+            document.getElementById('power-overlay').style.display = 'none';
+            isPowerOn = true;
+            initAudio();
+            playClickSound();
+            fetchStations('China'); // 默认加载
+            drawVisualizer();
+            
+            // 播放开机声效
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.frequency.setValueAtTime(100, audioCtx.currentTime);
+            osc.frequency.linearRampToValueAtTime(1000, audioCtx.currentTime + 0.5);
+            gain.gain.setValueAtTime(0, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 0.1);
+            gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.5);
+        }
+
+        async function fetchStations(countryCode) {
+            const list = document.getElementById('station-list');
+            list.innerHTML = '<div style="padding:10px;">SCANNING ETHER...</div>';
+            
+            try {
+                // 使用 Radio Browser API
+                const resp = await fetch(`https://de1.api.radio-browser.info/json/stations/bycountry/${countryCode}?limit=50&order=clickcount&reverse=true`);
+                const data = await resp.json();
+                stations = data.filter(s => s.url_resolved); // 确保有有效链接
+                renderList();
+            } catch (e) {
+                list.innerHTML = 'SIGNAL LOST.';
+            }
+        }
+
+        function renderList() {
+            const list = document.getElementById('station-list');
+            list.innerHTML = '';
+            stations.forEach((s, i) => {
+                const div = document.createElement('div');
+                div.className = `channel-item ${i === currentStationIndex ? 'active' : ''}`;
+                div.innerText = `${(87.5 + (i % 20)).toFixed(1)} FM - ${s.name.substring(0, 20)}`;
+                div.onclick = () => { selectStation(i); };
+                list.appendChild(div);
+            });
+        }
+
+        function selectStation(index) {
+            if (index < 0 || index >= stations.length) return;
+            playClickSound();
+            currentStationIndex = index;
+            renderList();
+            
+            // 模拟调频过程：先响噪音，再出声音
+            radioAudio.pause();
+            staticGain.gain.cancelScheduledValues(audioCtx.currentTime);
+            staticGain.gain.linearRampToValueAtTime(0.3, audioCtx.currentTime); // 噪音起
+            
+            radioAudio.src = stations[index].url_resolved;
+            radioAudio.crossOrigin = "anonymous";
+            
+            // 延迟一点播放，模拟搜台
+            setTimeout(() => {
+                radioAudio.play().then(() => {
+                     staticGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5); // 噪音落
+                }).catch(e => {
+                    console.log("Stream error", e);
+                    staticGain.gain.value = 0.5; // 播放失败保持噪音
+                });
+            }, 500);
+
+            // 移动滑块视觉
+            const freq = 875 + (index % 20) * 10;
+            document.getElementById('tuner').value = freq;
+            document.getElementById('freq-text').innerText = (freq/10).toFixed(1);
+        }
+
+        // 滑动变阻器交互
+        function onTuning() {
+            const val = document.getElementById('tuner').value;
+            document.getElementById('freq-text').innerText = (val / 10).toFixed(1);
+            
+            // 拖动时：静音电台，播放巨大的电流声
+            radioAudio.volume = 0.1;
+            staticGain.gain.setTargetAtTime(0.4, audioCtx.currentTime, 0.1);
+            
+            // 震动反馈 (Haptic)
+            if (navigator.vibrate && val % 5 === 0) {
+                navigator.vibrate(5); 
+            }
+        }
+
+        function onTuneRelease() {
+            // 松手时：找到最近的电台
+            radioAudio.volume = 1.0;
+            staticGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.5);
+            
+            // 简单的算法：随机映射到列表中的某一个（模拟不同频率对应不同台）
+            const val = document.getElementById('tuner').value;
+            const mappedIndex = Math.floor(val / 10) % stations.length;
+            selectStation(mappedIndex);
+        }
+
+        function changeCountry() {
+            const sel = document.getElementById('country-select');
+            const name = sel.options[sel.selectedIndex].text;
+            playClickSound();
+            // 映射国名到搜索
+            fetchStations(name);
+        }
+
+        function handlePreset(slot) {
+            // 简单逻辑：如果有台在播，存入；如果没台，不做；如果有且存了，读取
+            // 为了简化，这里逻辑是：如果当前没存，就存当前；如果存了，就跳过去。
+            // 长按功能在 Web 较难完美实现，这里用 Click+Shift 或者简单的状态切换逻辑
+            
+            playClickSound();
+            const btn = document.querySelectorAll('.preset-btn')[slot];
+            
+            if (!presets[slot]) {
+                // 存储
+                if (currentStationIndex !== -1) {
+                    presets[slot] = currentStationIndex;
+                    btn.classList.add('saved');
+                    // 模拟机械锁死声
+                }
+            } else {
+                // 读取
+                selectStation(presets[slot]);
+            }
+        }
+
+        // --- 视觉绘制 (Oscilloscope) ---
+        
+        function drawVisualizer() {
+            const canvas = document.getElementById('visualizer');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+            
+            function draw() {
+                requestAnimationFrame(draw);
+                analyser.getByteTimeDomainData(dataArray);
+                
+                // 黑色背景 + 拖尾效果
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+                ctx.fillRect(0, 0, width, height);
+                
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#00ff41'; // 荧光绿
+                ctx.shadowBlur = 5;
+                ctx.shadowColor = '#00ff41';
+                
+                ctx.beginPath();
+                const sliceWidth = width * 1.0 / bufferLength;
+                let x = 0;
+                
+                for(let i = 0; i < bufferLength; i++) {
+                    const v = dataArray[i] / 128.0;
+                    const y = v * height / 2;
+                    
+                    if(i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                    
+                    x += sliceWidth;
+                }
+                
+                ctx.lineTo(canvas.width, canvas.height/2);
+                ctx.stroke();
+            }
+            draw();
+        }
+
+        // 时钟
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toTimeString().substring(0, 5);
+        }, 1000);
+
+    </script>
+</body>
+</html>

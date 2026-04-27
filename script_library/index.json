@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 105,
-  "updated": "2026-04-27T09:24:29Z",
+  "data_version": 106,
+  "updated": "2026-04-27T18:20:25.395Z",
   "announcement": null,
   "categories": [
     {
@@ -1770,6 +1770,29 @@
       "updated": null,
       "status": "active",
       "lines": 1097
+    },
+    {
+      "id": "script_mohivn8v",
+      "name": "收音机",
+      "name_en": "收音机",
+      "desc": "实时收听世界各国的收音机",
+      "desc_en": "实时收听世界各国的收音机",
+      "category": "ui",
+      "file": "scripts/ui/script_mohivn8v.html",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "html",
+      "author": "dreamingbob",
+      "author_en": "dreamingbob",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-27",
+      "updated": null,
+      "status": "active",
+      "lines": 559
     }
   ]
 }
