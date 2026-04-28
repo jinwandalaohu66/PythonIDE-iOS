@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 106,
-  "updated": "2026-04-27T18:20:25.395Z",
+  "data_version": 107,
+  "updated": "2026-04-28T13:39:10.974Z",
   "announcement": null,
   "categories": [
     {
@@ -1793,6 +1793,29 @@
       "updated": null,
       "status": "active",
       "lines": 559
+    },
+    {
+      "id": "script_moio9udy",
+      "name": "验证器的密钥生成器",
+      "name_en": "验证器的密钥生成器",
+      "desc": "生成在谷歌验证器等验证软件的密钥",
+      "desc_en": "生成在谷歌验证器等验证软件的密钥",
+      "category": "basic",
+      "file": "scripts/basic/script_moio9udy.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "dreamingbob",
+      "author_en": "dreamingbob",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-28",
+      "updated": null,
+      "status": "active",
+      "lines": 159
     }
   ]
 }
