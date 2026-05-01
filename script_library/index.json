@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "data_version": 108,
-  "updated": "2026-04-28T14:32:42.423Z",
+  "data_version": 109,
+  "updated": "2026-04-30T05:00:37.853Z",
   "announcement": null,
   "categories": [
     {
@@ -1839,6 +1839,29 @@
       "updated": null,
       "status": "active",
       "lines": 425
+    },
+    {
+      "id": "script_mol0mojg",
+      "name": "协同效应",
+      "name_en": "协同效应",
+      "desc": "幸运房东丐版",
+      "desc_en": "幸运房东丐版",
+      "category": "other",
+      "file": "scripts/other/script_mol0mojg.py",
+      "thumbnail": null,
+      "version": 1,
+      "file_type": "py",
+      "author": "Daoyu268",
+      "author_en": "Daoyu268",
+      "tags": [
+        "community"
+      ],
+      "requires": [],
+      "min_app_version": "1.5.0",
+      "added": "2026-04-30",
+      "updated": null,
+      "status": "active",
+      "lines": 1049
     }
   ]
 }
